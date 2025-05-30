@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>云农谷小程序聚合支付原型</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #f0f0f0;
+            display: flex;
+            height: 100vh;
+        }
+
+        /* 左侧导航栏 */
+        .sidebar {
+            width: 250px;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .sidebar h2 {
+            margin-bottom: 20px;
+            color: #3498db;
+        }
+
+        .nav-category {
+            width: 100%;
+            padding: 12px;
+            margin: 5px 0;
+            background: #1a252f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .nav-category:hover {
+            background: #2c3e50;
+        }
+
+        .nav-category.expanded {
+            background: #3498db;
+        }
+
+        .nav-submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            margin-left: 15px;
+        }
+
+        .nav-submenu.expanded {
+            max-height: 600px;
+        }
+
+        .nav-btn {
+            width: 100%;
+            padding: 10px 15px;
+            margin: 3px 0;
+            background: #34495e;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 14px;
+        }
+
+        .nav-btn:hover {
+            background: #3498db;
+        }
+
+        .nav-btn.active {
+            background: #e74c3c;
+        }
+
+        .category-arrow {
+            transition: transform 0.3s ease;
+            font-size: 12px;
+        }
+
+        /* 手机模拟器 */
+        .phone-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .phone {
+            width: 375px;
+            height: 800px;
+            background: #000;
+            border-radius: 50px;
+            padding: 25px 15px;
+            position: relative;
+            box-shadow: 0 0 30px rgba(0,0,0,0.4);
+        }
+
+        .screen {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 35px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 状态栏 */
+        .status-bar {
+            height: 50px;
+            background: #4CAF50;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        /* 页面内容区域 */
+        .page {
+            display: none;
+            height: calc(100% - 50px);
+            overflow-y: auto;
+            position: relative;
+            /* 隐藏滚动条 */
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+        }
+
+        .page::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* 通用样式 */
+        .header {
+            background: #4CAF50;
+            color: white;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .back-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 25px;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-btn img {
+            width: 24px;
+            height: 24px;
+            filter: brightness(0) invert(1); /* 将图片转为白色 */
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .content {
+            padding: 15px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .btn-primary {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        .btn-secondary {
+            background: #f39c12;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        .price {
+            color: #e74c3c;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .payment-method {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .payment-method:hover {
+            background: #f8f9fa;
+            border-color: #007bff;
+        }
+
+        .payment-method.selected {
+            background: #e3f2fd;
+            border-color: #2196f3;
+        }
+
+        .payment-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 15px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 50px;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #4CAF50;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin: 20px auto;
+        }
+
+        .order-status {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        .status-paid {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .status-refunding {
+            color: #ff9800;
+            font-weight: bold;
+        }
+
+        .status-refunded {
+            color: #2196f3;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>页面导航</h2>
+        
+        <div class="nav-category expanded" onclick="toggleCategory('user-category')">
+            <span>用户端（C端）</span>
+            <span class="category-arrow">▼</span>
+        </div>
+        <div class="nav-submenu expanded" id="user-category">
+            <button class="nav-btn active" onclick="showPage('home')">首页</button>
+            <button class="nav-btn" onclick="showPage('shop')">商店页面</button>
+            <button class="nav-btn" onclick="showPage('product')">商品详情</button>
+            <button class="nav-btn" onclick="showPage('product-select')">商品选择</button>
+            <button class="nav-btn" onclick="showPage('order')">订单页面</button>
+            <button class="nav-btn" onclick="showPage('payment')">聚合支付</button>
+            <button class="nav-btn" onclick="showPage('paying')">支付中</button>
+            <button class="nav-btn" onclick="showPage('pay-success')">支付成功</button>
+            <button class="nav-btn" onclick="showPage('order-detail')">订单详情</button>
+            <button class="nav-btn" onclick="showPage('refund')">申请退款</button>
+            <button class="nav-btn" onclick="showPage('refund-success')">退款成功</button>
+        </div>
+    </div>
+
+    <div class="phone-container">
+        <div class="phone">
+            <div class="screen">
+                <div class="status-bar">
+                    <span>14:19</span>
+                    <span>🔋 84%</span>
+                </div>
+
+                <!-- 首页 -->
+                <div class="page active" id="home">
+                    <div class="header">
+                        <span>云农谷</span>
+                        <span>种好地 管好田 算好账 卖好价</span>
+                    </div>
+                    <div class="content">
+                        <div style="background: linear-gradient(135deg, #4CAF50, #81C784); padding: 20px; border-radius: 10px; color: white; margin-bottom: 20px;">
+                            <h3>一体化智能助机器人</h3>
+                            <p>自主设计 高度集成</p>
+                        </div>
+                        
+                        <h3 style="margin: 20px 0 10px;">AI+农业</h3>
+                        <p style="color: #666; margin-bottom: 15px;">根据作物生育时期，推送田间管理措施等</p>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div class="product-card" style="text-align: center;">
+                                <div style="font-size: 30px; margin-bottom: 10px;">🌾</div>
+                                <div>冬小麦</div>
+                            </div>
+                            <div class="product-card" style="text-align: center;">
+                                <div style="font-size: 30px; margin-bottom: 10px;">🌽</div>
+                                <div>夏玉米</div>
+                            </div>
+                            <div class="product-card" style="text-align: center;">
+                                <div style="font-size: 30px; margin-bottom: 10px;">🥜</div>
+                                <div>花生</div>
+                            </div>
+                            <div class="product-card" style="text-align: center;">
+                                <div style="font-size: 30px; margin-bottom: 10px;">🌶️</div>
+                                <div>辣椒</div>
+                            </div>
+                        </div>
+
+                        <button class="btn-primary" onclick="showPage('shop')">进入商店</button>
+                    </div>
+                </div>
+
+                <!-- 商店页面 -->
+                <div class="page" id="shop">
+                    <div class="header">
+                        <button class="back-btn" onclick="showPage('home')">
+                            <img src="返回按钮.png" alt="返回">
+                        </button>
+                        <span>农联帮小店</span>
+                        <span>+ 关注</span>
+                    </div>
+                    <div class="content">
+                        <p style="color: #666; margin-bottom: 20px;">新鲜农产品，专业农资，智能农机，引领农业未来，让农业更美好！</p>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div class="product-card" onclick="showPage('product')">
+                                <div style="height: 120px; background: #e8f5e8; border-radius: 8px; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; font-size: 40px;">🧪</div>
+                                <h4>大量元素水溶肥海藻甲壳素</h4>
+                                <div class="price">¥ 80.00</div>
+                                <div style="color: #999; font-size: 12px;">已售 0</div>
+                            </div>
+                            
+                            <div class="product-card">
+                                <div style="height: 120px; background: #f0f8ff; border-radius: 8px; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; font-size: 40px;">🧽</div>
+                                <h4>3%甲霜·嘧菌酯杀菌剂</h4>
+                                <div class="price">¥ 52.00</div>
+                                <div style="color: #999; font-size: 12px;">已售 0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 商品详情 -->
+                <div class="page" id="product">
+                    <div class="header">
+                        <button class="back-btn" onclick="showPage('shop')">
+                            <img src="返回按钮.png" alt="返回">
+                        </button>
+                        <span>海藻甲壳素</span>
+                        <span>⋯</span>
+                    </div>
+                    <div class="content" style="padding-bottom: 80px;">
+                        <div style="height: 200px; background: linear-gradient(135deg, #87CEEB, #98FB98); border-radius: 10px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px;">
+                            🧪 海藻甲壳素
+                        </div>
+                        
+                        <div class="price" style="margin-bottom: 15px;">¥80.00</div>
+                        
+                        <h3 style="margin-bottom: 10px;">大量元素水溶肥海藻甲壳素蔬菜果树通用高钙高钾桶装 1桶包邮到县城，40.00斤/桶</h3>
+                        <p style="color: #666; margin-bottom: 20px;">大量元素水溶肥高钙高钾生根壮苗改善品质厂家直销</p>
+                        
+                        <div style="border: 1px solid #ddd; border-radius: 8px; padding: 15px; margin: 15px 0;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                                <span>促销</span>
+                                <span style="color: #999;">暂无促销信息</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                                <span>已选</span>
+                                <span>规格名-1桶包邮到县城，40.00斤/桶</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>送至</span>
+                                <span style="color: #999;">暂无地址信息</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: white; padding: 15px; border-top: 1px solid #ddd; display: flex; gap: 10px;">
+                        <button class="btn-primary" style="flex: 1;" onclick="showPage('product-select')">加入购物车</button>
+                        <button class="btn-secondary" style="flex: 1;" onclick="showPage('product-select')">立即购买</button>
+                    </div>
+                </div>
+
+                <!-- 商品选择页面 -->
+                <div class="page" id="product-select">
+                    <div style="position: relative; height: 100%;">
+                        <div style="position: absolute; top: 20px; right: 20px; font-size: 24px; cursor: pointer;" onclick="showPage('product')">×</div>
+                        
+                        <div style="padding: 20px; padding-bottom: 100px;">
+                            <div style="display: flex; margin-bottom: 20px;">
+                                <div style="width: 80px; height: 80px; background: #e8f5e8; border-radius: 8px; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-size: 30px;">🧪</div>
+                                <div>
+                                    <div class="price">¥ 80.00</div>
+                                    <div style="color: #999; font-size: 14px;">已选 1桶包邮到县城，40.00斤/桶，1个</div>
+                                </div>
+                            </div>
+                            
+                            <div style="margin-bottom: 30px;">
+                                <h4 style="margin-bottom: 15px;">规格名</h4>
+                                <div style="border: 2px solid #e74c3c; border-radius: 20px; padding: 10px 15px; display: inline-block; color: #e74c3c;">
+                                    1桶包邮到县城，40.00斤/桶
+                                </div>
+                            </div>
+                            
+                            <div style="margin-bottom: 50px;">
+                                <h4 style="margin-bottom: 15px;">数量</h4>
+                                <div style="display: flex; align-items: center; gap: 20px;">
+                                    <button style="width: 30px; height: 30px; border: 1px solid #ddd; background: white; border-radius: 50%;">-</button>
+                                    <span style="font-size: 18px;">1</span>
+                                    <button style="width: 30px; height: 30px; border: 1px solid #ddd; background: white; border-radius: 50%;">+</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="position: absolute; bottom: 0; left: 0; right: 0; background: white; padding: 15px; border-top: 1px solid #ddd; display: flex; gap: 10px;">
+                            <button class="btn-primary" style="flex: 1;" onclick="showPage('order')">加入购物车</button>
+                            <button class="btn-secondary" style="flex: 1;" onclick="showPage('order')">立即购买</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 订单页面 -->
+                <div class="page" id="order">
+                    <div class="header">
+                        <button class="back-btn" onclick="showPage('product-select')">
+                            <img src="返回按钮.png" alt="返回">
+                        </button>
+                        <span>填写订单</span>
+                        <span>⋯</span>
+                    </div>
+                    <div class="content" style="padding-bottom: 80px;">
+                        <div style="background: white; border-radius: 8px; padding: 15px; margin-bottom: 15px;">
+                            <div style="color: #e74c3c; margin-bottom: 10px;">请选择地址 ></div>
+                        </div>
+                        
+                        <div style="background: white; border-radius: 8px; padding: 15px; margin-bottom: 15px;">
+                            <h4 style="margin-bottom: 15px;">农联帮小店</h4>
+                            <div style="display: flex; margin-bottom: 15px;">
+                                <div style="width: 60px; height: 60px; background: #e8f5e8; border-radius: 8px; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-size: 20px;">🧪</div>
+                                <div style="flex: 1;">
+                                    <h5>大量元素水溶肥海藻甲壳素蔬菜果树通用高钙高钾桶装 1桶包邮到县城，40.00斤/桶</h5>
+                                    <div style="color: #999; margin-top: 5px;">x1</div>
+                                </div>
+                            </div>
+                            <div class="price" style="text-align: right;">¥ 80.00</div>
+                        </div>
+                        
+                        <div style="background: white; border-radius: 8px; padding: 15px; margin-bottom: 15px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <span>发票信息</span>
+                                <span style="color: #999;">不开发票</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <span>配送</span>
+                                <span>物流</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>备注信息</span>
+                                <span style="color: #999;">请输入内容</span>
+                            </div>
+                        </div>
+                        
+                        <div style="background: white; border-radius: 8px; padding: 15px; margin-bottom: 15px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <span>商品合计</span>
+                                <span>¥ 80.00</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <span>运费</span>
+                                <span>包邮</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <span>优惠券</span>
+                                <span>0 张可用 ></span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <span>优惠金额</span>
+                                <span>0.00</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>活动优惠</span>
+                                <span>0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: white; padding: 15px; border-top: 1px solid #ddd; display: flex; justify-content: space-between; align-items: center;">
+                        <div class="price">¥80.00</div>
+                        <button style="background: #e74c3c; color: white; border: none; padding: 8px 20px; border-radius: 20px; font-size: 14px; cursor: pointer; white-space: nowrap;" onclick="showPage('payment')">立即支付</button>
+                    </div>
+                </div>
+
+                <!-- 聚合支付页面 -->
+                <div class="page" id="payment">
+                    <div class="header">
+                        <button class="back-btn" onclick="showPage('order')">
+                            <img src="返回按钮.png" alt="返回">
+                        </button>
+                        <span>选择支付方式</span>
+                        <span></span>
+                    </div>
+                    <div class="content">
+                        <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px; margin-bottom: 20px;">
+                            <h3>支付金额</h3>
+                            <div class="price" style="font-size: 32px; margin: 10px 0;">¥80.00</div>
+                        </div>
+                        
+                        <h4 style="margin-bottom: 15px;">选择支付方式</h4>
+                        
+                        <div class="payment-method selected" data-method="wechat">
+                            <div class="payment-icon" style="background: #1aad19; color: white;">💬</div>
+                            <div style="flex: 1;">
+                                <div style="font-weight: bold;">微信支付</div>
+                                <div style="font-size: 12px; color: #999;">微信安全支付</div>
+                            </div>
+                            <div class="checkmark">✓</div>
+                        </div>
+                        
+                        <div class="payment-method" data-method="alipay">
+                            <div class="payment-icon" style="background: #1677ff; color: white;">💳</div>
+                            <div style="flex: 1;">
+                                <div style="font-weight: bold;">支付宝</div>
+                                <div style="font-size: 12px; color: #999;">支付宝安全支付</div>
+                            </div>
+                            <div class="checkmark" style="visibility: hidden;">✓</div>
+                        </div>
+                        
+                        <div class="payment-method" data-method="unionpay">
+                            <div class="payment-icon" style="background: #e10032; color: white;">🏦</div>
+                            <div style="flex: 1;">
+                                <div style="font-weight: bold;">云闪付</div>
+                                <div style="font-size: 12px; color: #999;">银联云闪付</div>
+                            </div>
+                            <div class="checkmark" style="visibility: hidden;">✓</div>
+                        </div>
+                        
+                        <div class="payment-method" data-method="card">
+                            <div class="payment-icon" style="background: #ff9800; color: white;">💰</div>
+                            <div style="flex: 1;">
+                                <div style="font-weight: bold;">快捷绑卡</div>
+                                <div style="font-size: 12px; color: #999;">银行卡快捷支付</div>
+                            </div>
+                            <div class="checkmark" style="visibility: hidden;">✓</div>
+                        </div>
+                        
+                        <button class="btn-primary" style="margin-top: 30px;" onclick="startPayment()">确认支付</button>
+                    </div>
+                </div>
+
+                <!-- 支付中页面 -->
+                <div class="page" id="paying">
+                    <div class="content">
+                        <div class="loading">
+                            <div class="spinner"></div>
+                            <h3>支付处理中...</h3>
+                            <p style="color: #666; margin-top: 10px;">请稍候，正在处理您的支付请求</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 支付成功页面 -->
+                <div class="page" id="pay-success">
+                    <div class="content">
+                        <div style="text-align: center; padding: 50px 20px;">
+                            <div class="success-icon">✓</div>
+                            <h2 style="color: #4CAF50; margin-bottom: 10px;">支付成功</h2>
+                            <p style="color: #666; margin-bottom: 30px;">您的订单已成功支付</p>
+                            
+                            <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; text-align: left; margin-bottom: 30px;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                    <span>订单号：</span>
+                                    <span>202312250001</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                    <span>支付金额：</span>
+                                    <span class="price">¥80.00</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                    <span>支付方式：</span>
+                                    <span>微信支付</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span>支付时间：</span>
+                                    <span>2023-12-25 14:19:32</span>
+                                </div>
+                            </div>
+                            
+                            <button class="btn-primary" onclick="showPage('order-detail')">查看订单详情</button>
+                            <button class="btn-secondary" onclick="showPage('home')">返回首页</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 订单详情页面 -->
+                <div class="page" id="order-detail">
+                    <div class="header">
+                        <button class="back-btn" onclick="showPage('pay-success')">
+                            <img src="返回按钮.png" alt="返回">
+                        </button>
+                        <span>订单详情</span>
+                        <span></span>
+                    </div>
+                    <div class="content">
+                        <div class="order-status">
+                            <h3 class="status-paid">已支付</h3>
+                            <p style="color: #666; margin-top: 5px;">订单已成功支付，商家正在备货</p>
+                        </div>
+                        
+                        <div style="background: white; border-radius: 8px; padding: 15px; margin: 15px 0;">
+                            <h4 style="margin-bottom: 15px;">商品信息</h4>
+                            <div style="display: flex; margin-bottom: 15px;">
+                                <div style="width: 60px; height: 60px; background: #e8f5e8; border-radius: 8px; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-size: 20px;">🧪</div>
+                                <div style="flex: 1;">
+                                    <h5>大量元素水溶肥海藻甲壳素蔬菜果树通用高钙高钾桶装</h5>
+                                    <div style="color: #999; margin-top: 5px;">规格：1桶包邮到县城，40.00斤/桶</div>
+                                    <div style="color: #999;">数量：1</div>
+                                </div>
+                                <div class="price">¥80.00</div>
+                            </div>
+                        </div>
+                        
+                        <div style="background: white; border-radius: 8px; padding: 15px; margin: 15px 0;">
+                            <h4 style="margin-bottom: 15px;">订单信息</h4>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <span>订单号：</span>
+                                <span>202312250001</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <span>下单时间：</span>
+                                <span>2023-12-25 14:19:00</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <span>支付时间：</span>
+                                <span>2023-12-25 14:19:32</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>支付方式：</span>
+                                <span>微信支付</span>
+                            </div>
+                        </div>
+                        
+                        <div style="background: white; border-radius: 8px; padding: 15px; margin: 15px 0;">
+                            <h4 style="margin-bottom: 15px;">费用明细</h4>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <span>商品金额：</span>
+                                <span>¥80.00</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <span>运费：</span>
+                                <span>¥0.00</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; font-weight: bold; color: #e74c3c;">
+                                <span>实付金额：</span>
+                                <span>¥80.00</span>
+                            </div>
+                        </div>
+                        
+                        <button class="btn-primary" onclick="showPage('refund')" style="background: #ff9800;">申请退款</button>
+                    </div>
+                </div>
+
+                <!-- 申请退款页面 -->
+                <div class="page" id="refund">
+                    <div class="header">
+                        <button class="back-btn" onclick="showPage('order-detail')">
+                            <img src="返回按钮.png" alt="返回">
+                        </button>
+                        <span>申请退款</span>
+                        <span></span>
+                    </div>
+                    <div class="content">
+                        <div style="background: white; border-radius: 8px; padding: 15px; margin-bottom: 15px;">
+                            <h4 style="margin-bottom: 15px;">退款商品</h4>
+                            <div style="display: flex; margin-bottom: 15px;">
+                                <div style="width: 60px; height: 60px; background: #e8f5e8; border-radius: 8px; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-size: 20px;">🧪</div>
+                                <div style="flex: 1;">
+                                    <h5>大量元素水溶肥海藻甲壳素蔬菜果树通用高钙高钾桶装</h5>
+                                    <div style="color: #999; margin-top: 5px;">x1</div>
+                                </div>
+                                <div class="price">¥80.00</div>
+                            </div>
+                        </div>
+                        
+                        <div style="background: white; border-radius: 8px; padding: 15px; margin-bottom: 15px;">
+                            <h4 style="margin-bottom: 15px;">退款原因</h4>
+                            <select style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 15px;">
+                                <option>请选择退款原因</option>
+                                <option>不需要了</option>
+                                <option>商品有问题</option>
+                                <option>物流太慢</option>
+                                <option>其他原因</option>
+                            </select>
+                            
+                            <h4 style="margin-bottom: 15px;">退款说明</h4>
+                            <textarea style="width: 100%; height: 100px; padding: 10px; border: 1px solid #ddd; border-radius: 5px; resize: none;" placeholder="请详细说明退款原因..."></textarea>
+                        </div>
+                        
+                        <div style="background: white; border-radius: 8px; padding: 15px; margin-bottom: 15px;">
+                            <h4 style="margin-bottom: 15px;">退款金额</h4>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <span>商品金额：</span>
+                                <span>¥80.00</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <span>运费：</span>
+                                <span>¥0.00</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; font-weight: bold; color: #e74c3c;">
+                                <span>退款金额：</span>
+                                <span>¥80.00</span>
+                            </div>
+                        </div>
+                        
+                        <button class="btn-primary" onclick="submitRefund()">提交退款申请</button>
+                    </div>
+                </div>
+
+                <!-- 退款成功页面 -->
+                <div class="page" id="refund-success">
+                    <div class="content">
+                        <div style="text-align: center; padding: 50px 20px;">
+                            <div class="success-icon" style="background: #2196f3;">✓</div>
+                            <h2 style="color: #2196f3; margin-bottom: 10px;">退款申请成功</h2>
+                            <p style="color: #666; margin-bottom: 30px;">您的退款申请已提交，预计3-5个工作日到账</p>
+                            
+                            <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; text-align: left; margin-bottom: 30px;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                    <span>退款单号：</span>
+                                    <span>R202312250001</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                    <span>退款金额：</span>
+                                    <span class="price">¥80.00</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                    <span>退款方式：</span>
+                                    <span>原路返回</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span>申请时间：</span>
+                                    <span>2023-12-25 14:25:00</span>
+                                </div>
+                            </div>
+                            
+                            <div class="order-status" style="background: #fff3cd; border: 1px solid #ffeaa7;">
+                                <h4 class="status-refunding">退款处理中</h4>
+                                <p style="color: #856404; margin-top: 5px;">商家正在处理您的退款申请</p>
+                            </div>
+                            
+                            <button class="btn-primary" onclick="showPage('home')" style="margin-top: 20px;">返回首页</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 分类菜单展开/收缩
+        function toggleCategory(categoryId) {
+            const category = document.querySelector(`[onclick*="${categoryId}"]`);
+            const submenu = document.getElementById(categoryId);
+            const arrow = category.querySelector('.category-arrow');
+            
+            if (submenu.classList.contains('expanded')) {
+                submenu.classList.remove('expanded');
+                category.classList.remove('expanded');
+                arrow.textContent = '▶';
+            } else {
+                submenu.classList.add('expanded');
+                category.classList.add('expanded');
+                arrow.textContent = '▼';
+            }
+        }
+
+        // 页面切换函数
+        function showPage(pageId) {
+            // 隐藏所有页面
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // 显示目标页面
+            document.getElementById(pageId).classList.add('active');
+            
+            // 更新导航按钮状态
+            const navBtns = document.querySelectorAll('.nav-btn');
+            navBtns.forEach(btn => btn.classList.remove('active'));
+            
+            // 找到对应的导航按钮并激活
+            const targetBtn = Array.from(navBtns).find(btn => 
+                btn.onclick.toString().includes(`'${pageId}'`)
+            );
+            if (targetBtn) {
+                targetBtn.classList.add('active');
+            }
+        }
+
+        // 支付方式选择
+        document.addEventListener('DOMContentLoaded', function() {
+            const paymentMethods = document.querySelectorAll('.payment-method');
+            paymentMethods.forEach(method => {
+                method.addEventListener('click', function() {
+                    // 移除所有选中状态
+                    paymentMethods.forEach(m => {
+                        m.classList.remove('selected');
+                        // 隐藏所有对号
+                        const checkmark = m.querySelector('.checkmark');
+                        if (checkmark) {
+                            checkmark.style.visibility = 'hidden';
+                        }
+                    });
+                    
+                    // 添加当前选中状态
+                    this.classList.add('selected');
+                    // 显示当前对号
+                    const currentCheckmark = this.querySelector('.checkmark');
+                    if (currentCheckmark) {
+                        currentCheckmark.style.visibility = 'visible';
+                    }
+                });
+            });
+        });
+
+        // 开始支付
+        function startPayment() {
+            showPage('paying');
+            
+            // 模拟支付处理
+            setTimeout(() => {
+                showPage('pay-success');
+            }, 2000);
+        }
+
+        // 提交退款申请
+        function submitRefund() {
+            // 简单验证
+            const reason = document.querySelector('select').value;
+            if (!reason || reason === '请选择退款原因') {
+                alert('请选择退款原因');
+                return;
+            }
+            
+            showPage('refund-success');
+        }
+    </script>
+</body>
+</html> 
