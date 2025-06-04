@@ -315,6 +315,185 @@
             color: #2196f3;
             font-weight: bold;
         }
+
+        /* 商户端页面样式 */
+        .step-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 15px;
+            background: white;
+            border-bottom: 1px solid #eee;
+        }
+
+        .step-item {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            right: -50%;
+            width: 100%;
+            height: 2px;
+            background: #ddd;
+            z-index: 1;
+        }
+
+        .step-item.active::after {
+            background: #4CAF50;
+        }
+
+        .step-item.completed::after {
+            background: #4CAF50;
+        }
+
+        .step-number {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #ddd;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 8px;
+            font-size: 14px;
+            font-weight: bold;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-item.active .step-number {
+            background: #4CAF50;
+        }
+
+        .step-item.completed .step-number {
+            background: #4CAF50;
+        }
+
+        .step-title {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .step-item.active .step-title {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            border: 1px solid #f0f0f0;
+        }
+
+        .info-card h3 {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-label.required::before {
+            content: '*';
+            color: #e74c3c;
+            margin-right: 4px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.1);
+        }
+
+        .form-input.readonly {
+            background: #f8f9fa;
+            color: #6c757d;
+            cursor: not-allowed;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 10px;
+            margin-top: 2px;
+        }
+
+        .checkbox-text {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .checkbox-text a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-col {
+            flex: 1;
+        }
+
+        .btn-next {
+            width: 100%;
+            padding: 15px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 20px;
+        }
+
+        .btn-next:hover {
+            background: #45a049;
+        }
+
+        .btn-next:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body>
@@ -337,6 +516,17 @@
             <button class="nav-btn" onclick="showPage('order-detail')">订单详情</button>
             <button class="nav-btn" onclick="showPage('refund')">申请退款</button>
             <button class="nav-btn" onclick="showPage('refund-success')">退款成功</button>
+        </div>
+
+        <div class="nav-category" onclick="toggleCategory('merchant-category')">
+            <span>商户端</span>
+            <span class="category-arrow">▶</span>
+        </div>
+        <div class="nav-submenu" id="merchant-category">
+            <button class="nav-btn" onclick="showPage('merchant-register')">商户入驻</button>
+            <button class="nav-btn" onclick="showPage('tonglian-member')">开通通联会员</button>
+            <button class="nav-btn" onclick="showPage('bind-account')">企业会员绑定对公户</button>
+            <button class="nav-btn" onclick="showPage('withdraw-contract')">账户提现签约</button>
         </div>
     </div>
 
@@ -827,6 +1017,336 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- 商户入驻页面 -->
+                <div class="page" id="merchant-register">
+                    <div class="header">
+                        <button class="back-btn" onclick="showPage('home')">
+                            <img src="返回按钮.png" alt="返回">
+                        </button>
+                        <span>商户入驻</span>
+                        <span></span>
+                    </div>
+                    <div class="content">
+                        <div class="info-card">
+                            <h3>企业基础信息</h3>
+                            <div class="form-group">
+                                <label class="form-label required">企业全称</label>
+                                <input type="text" class="form-input" placeholder="请输入企业全称" value="内蒙古天翼网络科技有限公司">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">营业执照注册号</label>
+                                <input type="text" class="form-input" placeholder="一般为一个18位或统一社会信用代码" value="91420102544000158">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">企业类型</label>
+                                <select class="form-input">
+                                    <option>企业</option>
+                                    <option>个体工商户</option>
+                                    <option>其他</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">企业简称</label>
+                                <input type="text" class="form-input" placeholder="内蒙古天翼网络科技" value="内蒙古天翼网络科技">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">营业执照注册号</label>
+                                <input type="text" class="form-input" placeholder="914201025440001589" value="914201025440001589">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">企业类型</label>
+                                <input type="text" class="form-input" placeholder="内蒙古" value="内蒙古">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">联系电话</label>
+                                <input type="text" class="form-input" placeholder="18639277800" value="18639277800">
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <h3>法人信息</h3>
+                            <div class="form-group">
+                                <label class="form-label required">法人姓名</label>
+                                <input type="text" class="form-input" placeholder="李华华" value="李华华">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <label class="form-label required">法人身份证正面</label>
+                                    <div style="background: #f8f9fa; border: 2px dashed #ddd; border-radius: 8px; padding: 40px; text-align: center; color: #999;">
+                                        <div style="font-size: 24px; margin-bottom: 10px;">📷</div>
+                                        <div>点击添加图片</div>
+                                    </div>
+                                </div>
+                                <div class="form-col">
+                                    <label class="form-label required">法人身份证反面</label>
+                                    <div style="background: #f8f9fa; border: 2px dashed #ddd; border-radius: 8px; padding: 40px; text-align: center; color: #999;">
+                                        <div style="font-size: 24px; margin-bottom: 10px;">📷</div>
+                                        <div>点击添加图片</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">法人大类</label>
+                                <input type="text" class="form-input" placeholder="王三华" value="王三华">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">法人身份证号</label>
+                                <input type="text" class="form-input" placeholder="420234197711100623" value="420234197711100623">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">法人手机</label>
+                                <input type="text" class="form-input" placeholder="18686863888" value="18686863888">
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <h3>账户信息</h3>
+                            <div class="form-group">
+                                <label class="form-label">账户类型</label>
+                                <input type="text" class="form-input" value="对公" readonly class="readonly">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">账户名</label>
+                                <input type="text" class="form-input" value="内蒙古天翼网络科技有限公司" readonly class="readonly">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">账户号</label>
+                                <input type="text" class="form-input" placeholder="621245000000008217" value="621245000000008217">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">开户银行编号</label>
+                                <input type="text" class="form-input" placeholder="1311111111" value="1311111111">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">开户银行名称</label>
+                                <input type="text" class="form-input" value="中国工商银行" readonly class="readonly">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">开户银行地址</label>
+                                <input type="text" class="form-input" placeholder="内蒙古" value="内蒙古">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">开户银行支行</label>
+                                <input type="text" class="form-input" value="中国工商银行新疆乌鲁木齐河马泉支行" readonly class="readonly">
+                            </div>
+                        </div>
+
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="agreement">
+                            <label for="agreement" class="checkbox-text">
+                                我已阅读并同意《<a href="#">开通通联支付体系账户协议</a>》
+                            </label>
+                        </div>
+
+                        <button class="btn-next" onclick="showPage('tonglian-member')">确认</button>
+                    </div>
+                </div>
+
+                <!-- 开通通联会员页面 -->
+                <div class="page" id="tonglian-member">
+                    <div class="header">
+                        <button class="back-btn" onclick="showPage('merchant-register')">
+                            <img src="返回按钮.png" alt="返回">
+                        </button>
+                        <span>开通通联会员</span>
+                        <span></span>
+                    </div>
+                    
+                    <div class="step-nav">
+                        <div class="step-item active completed">
+                            <div class="step-number">1</div>
+                            <div class="step-title">基础信息填报</div>
+                        </div>
+                        <div class="step-item active">
+                            <div class="step-number">2</div>
+                            <div class="step-title">企业会员绑定对公户</div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">3</div>
+                            <div class="step-title">账户提现签约</div>
+                        </div>
+                    </div>
+                    
+                    <div class="content">
+                        <div class="info-card">
+                            <h3>基础信息</h3>
+                            <div class="form-group">
+                                <label class="form-label required">注册手机号</label>
+                                <input type="text" class="form-input readonly" value="18639277800" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">企业类型</label>
+                                <select class="form-input">
+                                    <option selected>企业</option>
+                                    <option>个体工商户</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">企业名称</label>
+                                <input type="text" class="form-input readonly" value="内蒙古天翼网络科技有限公司" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">企业简称</label>
+                                <input type="text" class="form-input readonly" value="内蒙古天翼网络科技" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">营业执照注册号</label>
+                                <input type="text" class="form-input readonly" value="914201025440001589" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">企业类型</label>
+                                <input type="text" class="form-input readonly" value="内蒙古" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">联系电话</label>
+                                <input type="text" class="form-input readonly" value="18639277800" readonly>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <h3>法人信息</h3>
+                            <div class="form-group">
+                                <label class="form-label required">法人姓名</label>
+                                <input type="text" class="form-input readonly" value="王华权" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">法人身份证件</label>
+                                <input type="text" class="form-input readonly" value="王三华" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">法人身份证号</label>
+                                <input type="text" class="form-input readonly" value="420234197711100623" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">法人手机</label>
+                                <input type="text" class="form-input readonly" value="18686863888" readonly>
+                            </div>
+                        </div>
+
+                        <button class="btn-next" onclick="nextStep('bind-account')">下一步</button>
+                    </div>
+                </div>
+
+                <!-- 企业会员绑定对公户页面 -->
+                <div class="page" id="bind-account">
+                    <div class="header">
+                        <button class="back-btn" onclick="showPage('tonglian-member')">
+                            <img src="返回按钮.png" alt="返回">
+                        </button>
+                        <span>企业会员绑定对公户</span>
+                        <span></span>
+                    </div>
+                    
+                    <div class="step-nav">
+                        <div class="step-item completed">
+                            <div class="step-number">✓</div>
+                            <div class="step-title">基础信息填报</div>
+                        </div>
+                        <div class="step-item active">
+                            <div class="step-number">2</div>
+                            <div class="step-title">企业会员绑定对公户</div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">3</div>
+                            <div class="step-title">账户提现签约</div>
+                        </div>
+                    </div>
+                    
+                    <div class="content">
+                        <div class="info-card">
+                            <h3>对公账户信息</h3>
+                            <div class="form-group">
+                                <label class="form-label">账户类型</label>
+                                <input type="text" class="form-input readonly" value="对公" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">账户名</label>
+                                <input type="text" class="form-input readonly" value="内蒙古天翼网络科技有限公司" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">账户号</label>
+                                <input type="text" class="form-input readonly" value="621245000000008217" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">开户银行编号</label>
+                                <input type="text" class="form-input readonly" value="1311111111" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">开户银行名称</label>
+                                <input type="text" class="form-input readonly" value="中国工商银行" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">开户银行地址</label>
+                                <input type="text" class="form-input readonly" value="内蒙古" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">开户银行支行</label>
+                                <input type="text" class="form-input readonly" value="中国工商银行新疆乌鲁木齐河马泉支行" readonly>
+                            </div>
+                        </div>
+
+                        <button class="btn-next" onclick="nextStep('withdraw-contract')">下一步</button>
+                    </div>
+                </div>
+
+                <!-- 账户提现签约页面 -->
+                <div class="page" id="withdraw-contract">
+                    <div class="header">
+                        <button class="back-btn" onclick="showPage('bind-account')">
+                            <img src="返回按钮.png" alt="返回">
+                        </button>
+                        <span>账户提现签约</span>
+                        <span></span>
+                    </div>
+                    
+                    <div class="step-nav">
+                        <div class="step-item completed">
+                            <div class="step-number">✓</div>
+                            <div class="step-title">基础信息填报</div>
+                        </div>
+                        <div class="step-item completed">
+                            <div class="step-number">✓</div>
+                            <div class="step-title">企业会员绑定对公户</div>
+                        </div>
+                        <div class="step-item active">
+                            <div class="step-number">3</div>
+                            <div class="step-title">账户提现签约</div>
+                        </div>
+                    </div>
+                    
+                    <div class="content">
+                        <div class="info-card">
+                            <h3>签约信息确认</h3>
+                            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                    <span>企业名称：</span>
+                                    <span>内蒙古天翼网络科技有限公司</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                    <span>法人姓名：</span>
+                                    <span>王华权</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                    <span>对公账户：</span>
+                                    <span>621245000000008217</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span>开户银行：</span>
+                                    <span>中国工商银行</span>
+                                </div>
+                            </div>
+                            
+                            <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                                <h4 style="color: #4CAF50; margin-bottom: 10px;">✓ 签约成功</h4>
+                                <p style="color: #333; margin-bottom: 5px;">恭喜您已成功完成账户提现签约！</p>
+                                <p style="color: #666; font-size: 14px;">现在您可以正常使用提现功能</p>
+                            </div>
+                        </div>
+
+                        <button class="btn-next" onclick="showPage('home')" style="background: #2196F3;">完成</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -868,6 +1388,25 @@
             );
             if (targetBtn) {
                 targetBtn.classList.add('active');
+            }
+
+            // 商户端页面需要展开商户端菜单
+            const merchantPages = ['merchant-register', 'tonglian-member', 'bind-account', 'withdraw-contract'];
+            if (merchantPages.includes(pageId)) {
+                const merchantCategory = document.getElementById('merchant-category');
+                const merchantCategoryBtn = document.querySelector('[onclick*="merchant-category"]');
+                const arrow = merchantCategoryBtn.querySelector('.category-arrow');
+                
+                if (!merchantCategory.classList.contains('expanded')) {
+                    merchantCategory.classList.add('expanded');
+                    merchantCategoryBtn.classList.add('expanded');
+                    arrow.textContent = '▼';
+                }
+                
+                // 同时更新步骤导航
+                if (pageId !== 'merchant-register') {
+                    updateStepNavigation(pageId);
+                }
             }
         }
 
@@ -917,6 +1456,49 @@
             }
             
             showPage('refund-success');
+        }
+
+        // 商户端步骤切换
+        function nextStep(nextPageId) {
+            showPage(nextPageId);
+            updateStepNavigation(nextPageId);
+        }
+
+        // 更新步骤导航状态
+        function updateStepNavigation(currentPageId) {
+            const stepMapping = {
+                'tonglian-member': 1,
+                'bind-account': 2,
+                'withdraw-contract': 3
+            };
+            
+            const currentStep = stepMapping[currentPageId];
+            if (!currentStep) return;
+            
+            // 更新所有步骤状态
+            document.querySelectorAll('.step-nav').forEach(nav => {
+                const steps = nav.querySelectorAll('.step-item');
+                steps.forEach((step, index) => {
+                    const stepNumber = index + 1;
+                    const numberEl = step.querySelector('.step-number');
+                    
+                    // 清除所有状态类
+                    step.classList.remove('active', 'completed');
+                    
+                    if (stepNumber < currentStep) {
+                        // 已完成的步骤
+                        step.classList.add('completed');
+                        numberEl.textContent = '✓';
+                    } else if (stepNumber === currentStep) {
+                        // 当前步骤
+                        step.classList.add('active');
+                        numberEl.textContent = stepNumber;
+                    } else {
+                        // 未完成的步骤
+                        numberEl.textContent = stepNumber;
+                    }
+                });
+            });
         }
     </script>
 </body>
