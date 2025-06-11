@@ -841,7 +841,7 @@
             <button class="nav-btn" onclick="showPage('enterprise-auth-confirm')">法人信息确认</button>
             <button class="nav-btn" onclick="showPage('enterprise-auth-license')">上传营业执照</button>
             <button class="nav-btn" onclick="showPage('enterprise-auth-account')">绑定账户信息</button>
-            <button class="nav-btn" onclick="showPage('enterprise-auth-license-confirm')">企业信息确认</button>
+                                <button class="nav-btn" onclick="showPage('enterprise-auth-license-confirm')">企业信息审核</button>
             <button class="nav-btn" onclick="showPage('enterprise-auth-reviewing')">审核中</button>
             <button class="nav-btn" onclick="showPage('enterprise-auth-success')">认证通过</button>
         </div>
@@ -1367,7 +1367,7 @@
                         </div>
                         <div class="step-item">
                             <div class="step-number">5</div>
-                            <div class="step-title">企业<br>信息确认</div>
+                            <div class="step-title">企业<br>信息审核</div>
                         </div>
                     </div>
                     
@@ -1442,7 +1442,7 @@
                         </div>
                         <div class="step-item">
                             <div class="step-number">5</div>
-                            <div class="step-title">企业<br>信息确认</div>
+                            <div class="step-title">企业<br>信息审核</div>
                         </div>
                     </div>
                     
@@ -1483,9 +1483,9 @@
                             请确认身份信息，如有错误请<a href="#" style="color: #2196f3; text-decoration: none;">修改</a>
                         </p>
                         
-                        <div style="display: flex; gap: 15px; margin-top: 40px;">
-                            <button class="btn-secondary" style="flex: 1; height: 50px; border-radius: 25px; font-size: 16px; font-weight: 500;" onclick="showPage('enterprise-auth-upload')">返回重拍</button>
-                            <button class="btn-next" style="flex: 2; height: 50px; border-radius: 25px; font-size: 16px; font-weight: 500;" onclick="nextEnterpriseAuthStep('enterprise-auth-license')">下一步</button>
+                        <div style="display: flex; gap: 15px; margin-top: 40px; align-items: center;">
+                            <button class="btn-secondary" style="flex: 1; height: 50px; border-radius: 25px; font-size: 16px; font-weight: 500; margin: 0;" onclick="showPage('enterprise-auth-upload')">返回重拍</button>
+                            <button class="btn-next" style="flex: 2; height: 50px; border-radius: 25px; font-size: 16px; font-weight: 500; margin: 0;" onclick="nextEnterpriseAuthStep('enterprise-auth-license')">下一步</button>
                         </div>
                     </div>
                 </div>
@@ -1522,7 +1522,7 @@
                         </div>
                         <div class="step-item">
                             <div class="step-number">5</div>
-                            <div class="step-title">企业<br>信息确认</div>
+                            <div class="step-title">企业<br>信息审核</div>
                         </div>
                     </div>
 
@@ -1539,9 +1539,9 @@
                             注意事项:请上传上述单位经营时用于经营的营业执新用，请确保清晰性
                         </p>
                         
-                        <div style="display: flex; gap: 15px; margin-top: 50px;">
-                            <button class="btn-secondary" style="flex: 1; height: 50px; border-radius: 25px; font-size: 16px; font-weight: 500;" onclick="showPage('enterprise-auth-confirm')">上一步</button>
-                            <button class="btn-next" style="flex: 2; height: 50px; border-radius: 25px; font-size: 16px; font-weight: 500;" onclick="nextEnterpriseAuthStep('enterprise-auth-account')">下一步</button>
+                        <div style="display: flex; gap: 15px; margin-top: 50px; align-items: center;">
+                            <button class="btn-secondary" style="flex: 1; height: 50px; border-radius: 25px; font-size: 16px; font-weight: 500; margin: 0;" onclick="showPage('enterprise-auth-confirm')">上一步</button>
+                            <button class="btn-next" style="flex: 2; height: 50px; border-radius: 25px; font-size: 16px; font-weight: 500; margin: 0;" onclick="nextEnterpriseAuthStep('enterprise-auth-account')">下一步</button>
                         </div>
                     </div>
                 </div>
@@ -1578,7 +1578,7 @@
                         </div>
                         <div class="step-item">
                             <div class="step-number">5</div>
-                            <div class="step-title">企业<br>信息确认</div>
+                            <div class="step-title">企业<br>信息审核</div>
                         </div>
                     </div>
                     
@@ -1627,9 +1627,9 @@
                             </label>
                         </div>
 
-                        <div style="display: flex; gap: 15px; margin-top: 40px;">
-                            <button class="btn-secondary" style="flex: 1; height: 50px; border-radius: 25px; font-size: 16px; font-weight: 500;" onclick="showPage('enterprise-auth-license')">上一步</button>
-                            <button class="btn-next" style="flex: 2; height: 50px; border-radius: 25px; font-size: 16px; font-weight: 500;" onclick="validateAndNext()">下一步</button>
+                        <div style="display: flex; gap: 15px; margin-top: 40px; align-items: center;">
+                            <button class="btn-secondary" style="flex: 1; height: 50px; border-radius: 25px; font-size: 16px; font-weight: 500; margin: 0;" onclick="showPage('enterprise-auth-license')">上一步</button>
+                            <button class="btn-next" style="flex: 2; height: 50px; border-radius: 25px; font-size: 16px; font-weight: 500; margin: 0;" onclick="validateAndNext()">下一步</button>
                         </div>
                     </div>
                 </div>
@@ -1675,7 +1675,10 @@
                         <p style="color: #666; font-size: 14px; margin-bottom: 20px;">拍照时请保持清晰完整，避免反光</p>
                         
                         <div class="license-preview">
-                            <img class="license-image" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjRkZGOEUxIiBzdHJva2U9IiNGRkMxMDciIHN0cm9rZS13aWR0aD0iMiIvPgo8dGV4dCB4PSIxNTAiIHk9IjQwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMzMzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7okKXkuJrmiafnhafpo5hmaWxsPSIjMzMzIj7okKXkuJrmiafnhafkuJE8L3RleHQ+Cjx0ZXh0IHg9IjE1MCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPueZveS7o+WbvuaYvkNvbnRlbnQ8L3RleHQ+CjxyZWN0IHg9IjIwMCIgeT0iMTIwIiB3aWR0aD0iODAiIGhlaWdodD0iNjAiIGZpbGw9IiNFRUUiLz4KPHR2cHQgeD0iMjQwIiB5PSIxNTUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UVLnoIE8L3RleHQ+Cjwvc3ZnPgo=" alt="营业执照">
+                            <div style="background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 8px; width: 200px; height: 140px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #6c757d;">
+                                <div style="font-size: 48px; margin-bottom: 8px;">📄</div>
+                                <div style="font-size: 14px; text-align: center;">营业执照</div>
+                            </div>
                         </div>
                         
                         <div class="info-card">
@@ -1701,9 +1704,9 @@
                             请确认营业执照信息，如有错误请<a href="#" style="color: #2196f3; text-decoration: none;">修改</a>
                         </p>
                         
-                        <div style="display: flex; gap: 15px; margin-top: 40px;">
-                            <button class="btn-secondary" style="flex: 1; height: 50px; border-radius: 25px; font-size: 16px; font-weight: 500;" onclick="showPage('enterprise-auth-account')">上一步</button>
-                            <button class="btn-next" style="flex: 2; height: 50px; border-radius: 25px; font-size: 16px; font-weight: 500; background: #2196F3;" onclick="nextEnterpriseAuthStep('enterprise-auth-reviewing')">提交</button>
+                        <div style="display: flex; gap: 15px; margin-top: 40px; align-items: center;">
+                            <button class="btn-secondary" style="flex: 1; height: 50px; border-radius: 25px; font-size: 16px; font-weight: 500; margin: 0;" onclick="showPage('enterprise-auth-account')">上一步</button>
+                            <button class="btn-next" style="flex: 2; height: 50px; border-radius: 25px; font-size: 16px; font-weight: 500; background: #2196F3; margin: 0;" onclick="nextEnterpriseAuthStep('enterprise-auth-reviewing')">提交</button>
                         </div>
                     </div>
                 </div>
@@ -1740,15 +1743,15 @@
                         </div>
                         <div class="step-item active">
                             <div class="step-number">5</div>
-                            <div class="step-title">企业<br>信息确认</div>
+                            <div class="step-title">企业<br>信息审核</div>
                         </div>
                     </div>
                     
                     <div class="content">
                         <div class="auth-status">
                             <div class="status-icon reviewing">🕐</div>
-                            <div class="status-title">企业信息审要确认</div>
-                            <div class="status-subtitle">认证中</div>
+                            <div class="status-title">企业信息审核中</div>
+                            <div class="status-subtitle">请耐心等待，如有需要可联系400-</div>
                         </div>
                     </div>
                 </div>
@@ -1785,7 +1788,7 @@
                         </div>
                         <div class="step-item completed">
                             <div class="step-number">✓</div>
-                            <div class="step-title">企业<br>信息确认</div>
+                            <div class="step-title">企业<br>信息审核</div>
                         </div>
                     </div>
                     
@@ -1853,33 +1856,35 @@
                 </div>
 
                 <!-- 手机号验证弹窗 -->
-                <div class="page" id="verification-modal" style="display: none;">
-                    <div class="header">
-                        <button class="back-btn" onclick="closeVerificationModal()">
-                            <img src="返回按钮.png" alt="返回">
-                        </button>
-                        <span>手机号验证</span>
-                        <button class="modal-close-btn" onclick="closeVerificationModal()">×</button>
-                    </div>
-                    
-                    <div class="content" style="padding: 30px 20px;">
-                        <div class="verification-container">
-                            <div class="form-group" style="margin-bottom: 25px;">
-                                <label class="form-label" style="font-size: 16px; color: #333; margin-bottom: 8px; display: block;">手机号</label>
-                                <input type="text" class="form-input" id="verification-phone" value="138****9509" readonly style="background-color: #f5f5f5; height: 48px; padding: 12px 16px;">
+                <div id="verification-modal" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; align-items: center; justify-content: center;">
+                    <div style="background: white; border-radius: 12px; width: 260px; max-width: 80%; box-shadow: 0 8px 25px rgba(0,0,0,0.15); overflow: hidden;">
+                        <div style="padding: 18px 16px 14px 16px; border-bottom: 1px solid #f0f0f0; position: relative;">
+                            <h3 style="margin: 0; text-align: center; font-size: 16px; color: #333; font-weight: 500;">手机号验证</h3>
+                            <button onclick="closeVerificationModal()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; font-size: 18px; color: #999; cursor: pointer; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">×</button>
+                        </div>
+                        
+                        <div style="padding: 18px 16px;">
+                            <div style="margin-bottom: 14px;">
+                                <label style="display: block; margin-bottom: 5px; color: #666; font-size: 12px;">手机号</label>
+                                <input type="text" id="verification-phone" value="138****9509" readonly
+                                    style="width: 100%; padding: 9px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; box-sizing: border-box; background-color: #f8f8f8; color: #666;">
                             </div>
                             
-                            <div class="form-group" style="margin-bottom: 30px;">
-                                <label class="form-label" style="font-size: 16px; color: #333; margin-bottom: 8px; display: block;">验证码</label>
-                                <div style="display: flex; gap: 12px; align-items: center;">
-                                    <input type="text" class="form-input" id="verification-code" placeholder="请输入验证码" style="flex: 1; height: 48px; padding: 12px 16px;">
-                                    <button class="send-code-btn" onclick="sendVerificationCode()">发送验证码</button>
+                            <div style="margin-bottom: 18px;">
+                                <label style="display: block; margin-bottom: 5px; color: #666; font-size: 12px;">验证码</label>
+                                <div style="display: flex; gap: 6px; align-items: stretch;">
+                                    <input type="text" id="verification-code" placeholder="请输入验证码" 
+                                        style="flex: 1; min-width: 0; padding: 9px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; box-sizing: border-box;">
+                                    <button onclick="sendVerificationCode()" 
+                                        style="flex-shrink: 0; padding: 9px 8px; background: #4CAF50; color: white; border: none; border-radius: 6px; font-size: 11px; cursor: pointer; min-width: 60px;">获取验证码</button>
                                 </div>
                             </div>
                             
-                            <div class="verification-buttons">
-                                <button class="cancel-btn" onclick="closeVerificationModal()">取消</button>
-                                <button class="confirm-btn" onclick="verifyCode()">确认</button>
+                            <div style="display: flex; gap: 8px;">
+                                <button onclick="closeVerificationModal()" 
+                                    style="flex: 1; padding: 10px; background: #f5f5f5; color: #666; border: none; border-radius: 6px; font-size: 14px; cursor: pointer;">取消</button>
+                                <button onclick="verifyCode()" 
+                                    style="flex: 1; padding: 10px; background: #4CAF50; color: white; border: none; border-radius: 6px; font-size: 14px; cursor: pointer;">确认</button>
                             </div>
                         </div>
                     </div>
@@ -2098,30 +2103,20 @@
 
         // 显示手机号验证弹窗
         function showVerificationModal() {
-            // 隐藏当前页面
-            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-            // 显示验证弹窗
-            document.getElementById('verification-modal').classList.add('active');
-            document.getElementById('verification-modal').style.display = 'block';
+            // 显示验证弹窗（弹窗模式，不隐藏当前页面）
+            document.getElementById('verification-modal').style.display = 'flex';
         }
 
         // 关闭手机号验证弹窗
         function closeVerificationModal() {
             const checkbox = document.getElementById('withdraw-agreement');
-            const code = document.getElementById('verification-code').value;
             
-            // 如果没有成功验证就关闭弹窗，取消勾选
-            if (code !== '123456') {
-                checkbox.checked = false;
-            }
+            // 直接取消勾选（如果用户取消验证）
+            checkbox.checked = false;
             
             // 隐藏验证弹窗
-            document.getElementById('verification-modal').classList.remove('active');
             document.getElementById('verification-modal').style.display = 'none';
             document.getElementById('verification-code').value = '';
-            
-            // 返回到绑定账户页面
-            showPage('enterprise-auth-account');
         }
 
         // 发送验证码
@@ -2140,20 +2135,16 @@
                 return;
             }
             
-            if (code === '123456') {
-                // 验证成功
-                closeVerificationModal();
-                showToast('验证通过！');
-                
-                // 保持复选框勾选状态，表示协议已确认且验证通过
-                checkbox.checked = true;
-                checkbox.disabled = true; // 禁用复选框，防止重复验证
-                
-            } else {
-                alert('验证码错误，请重新输入');
-                // 验证失败，取消勾选
-                checkbox.checked = false;
-            }
+            // 直接验证通过，不校验具体验证码
+            // 隐藏验证弹窗
+            document.getElementById('verification-modal').style.display = 'none';
+            document.getElementById('verification-code').value = '';
+            
+            showToast('验证通过！');
+            
+            // 保持复选框勾选状态，表示协议已确认且验证通过
+            checkbox.checked = true;
+            checkbox.disabled = true; // 禁用复选框，防止重复验证
         }
 
         // 显示Toast提示
