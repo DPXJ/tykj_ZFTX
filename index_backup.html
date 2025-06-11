@@ -478,334 +478,20 @@
             background: #4CAF50;
             color: white;
             border: none;
-            border-radius: 25px;
+            border-radius: 8px;
             font-size: 16px;
-            font-weight: 500;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: background 0.3s;
             margin-top: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
         }
 
         .btn-next:hover {
             background: #45a049;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 16px rgba(76, 175, 80, 0.3);
         }
 
         .btn-next:disabled {
             background: #ccc;
-            cursor: not-allowed;
-        }
-
-        /* 企业认证页面样式 */
-        .upload-area {
-            border: 2px dashed #ddd;
-            border-radius: 12px;
-            padding: 40px 20px;
-            text-align: center;
-            background: #f8f9fa;
-            margin: 15px 0;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .upload-area:hover {
-            border-color: #4CAF50;
-            background: #f0f8f0;
-        }
-
-        .upload-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: #e3f2fd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px;
-            font-size: 24px;
-            color: #2196f3;
-        }
-
-        .upload-text {
-            color: #2196f3;
-            font-size: 16px;
-            font-weight: 500;
-        }
-
-        .photo-requirements {
-            background: #f5f5f5;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 30px;
-        }
-
-        .photo-requirements h4 {
-            color: #333;
-            margin-bottom: 15px;
-            font-size: 16px;
-        }
-
-        .requirements-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .requirement-item {
-            text-align: center;
-            padding: 10px;
-            background: white;
-            border-radius: 8px;
-        }
-
-        .requirement-icon {
-            font-size: 20px;
-            margin-bottom: 5px;
-        }
-
-        .requirement-text {
-            font-size: 12px;
-            color: #666;
-        }
-
-        .requirement-item.recommended {
-            border: 2px solid #2196f3;
-        }
-
-        .requirement-item.recommended .requirement-icon {
-            color: #2196f3;
-        }
-
-        .requirement-item.recommended .requirement-text {
-            color: #2196f3;
-            font-weight: 500;
-        }
-
-        .id-card-preview {
-            display: flex;
-            gap: 15px;
-            margin: 20px 0;
-        }
-
-        .id-card-image {
-            flex: 1;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .id-card-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .info-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .info-row:last-child {
-            border-bottom: none;
-        }
-
-        .info-label {
-            color: #666;
-            font-size: 14px;
-        }
-
-        .info-value {
-            color: #333;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .btn-secondary {
-            background: #f8f9fa;
-            color: #666;
-            border: 1px solid #ddd;
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 500;
-        }
-
-        .btn-secondary:hover {
-            background: #e9ecef;
-            border-color: #adb5bd;
-            color: #495057;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .license-preview {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .license-image {
-            width: 100%;
-            max-width: 300px;
-            border-radius: 8px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
-
-        .auth-status {
-            text-align: center;
-            padding: 60px 20px;
-        }
-
-        .status-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 40px;
-            color: white;
-        }
-
-        .status-icon.reviewing {
-            background: #2196f3;
-        }
-
-        .status-icon.success {
-            background: #4CAF50;
-        }
-
-        .status-title {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        .status-subtitle {
-            color: #666;
-            font-size: 14px;
-        }
-
-        /* 验证弹窗样式 */
-        .modal-close-btn {
-            background: none;
-            border: none;
-            font-size: 20px;
-            color: white;
-            cursor: pointer;
-            padding: 8px;
-            border-radius: 50%;
-            transition: background 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-        }
-
-        .modal-close-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .verification-container {
-            max-width: 320px;
-            margin: 0 auto;
-        }
-
-        .send-code-btn {
-            background: #e8f5e8;
-            color: #4CAF50;
-            border: 1px solid #4CAF50;
-            padding: 12px 16px;
-            border-radius: 8px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s;
-            white-space: nowrap;
-            min-width: 100px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .send-code-btn:hover {
-            background: #4CAF50;
-            color: white;
-        }
-
-        .verification-buttons {
-            display: flex;
-            gap: 15px;
-            margin-top: 40px;
-        }
-
-        .cancel-btn {
-            flex: 1;
-            background: #e8f5e8;
-            color: #4CAF50;
-            border: 1px solid #4CAF50;
-            padding: 15px;
-            border-radius: 25px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .cancel-btn:hover {
-            background: #4CAF50;
-            color: white;
-        }
-
-        .confirm-btn {
-            flex: 1;
-            background: #4CAF50;
-            color: white;
-            border: none;
-            padding: 15px;
-            border-radius: 25px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .confirm-btn:hover {
-            background: #45a049;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
-        }
-
-        /* 禁用的复选框样式 */
-        input[type="checkbox"]:disabled + .checkbox-text {
-            color: #999;
-            cursor: not-allowed;
-        }
-
-        input[type="checkbox"]:disabled {
             cursor: not-allowed;
         }
     </style>
@@ -837,13 +523,10 @@
             <span class="category-arrow">▶</span>
         </div>
         <div class="nav-submenu" id="merchant-category">
-            <button class="nav-btn" onclick="showPage('enterprise-auth-upload')">企业认证</button>
-            <button class="nav-btn" onclick="showPage('enterprise-auth-confirm')">法人信息确认</button>
-            <button class="nav-btn" onclick="showPage('enterprise-auth-license')">上传营业执照</button>
-            <button class="nav-btn" onclick="showPage('enterprise-auth-account')">绑定账户信息</button>
-            <button class="nav-btn" onclick="showPage('enterprise-auth-license-confirm')">企业信息确认</button>
-            <button class="nav-btn" onclick="showPage('enterprise-auth-reviewing')">审核中</button>
-            <button class="nav-btn" onclick="showPage('enterprise-auth-success')">认证通过</button>
+            <button class="nav-btn" onclick="showPage('merchant-register')">商户入驻</button>
+            <button class="nav-btn" onclick="showPage('tonglian-member')">开通通联会员</button>
+            <button class="nav-btn" onclick="showPage('bind-account')">企业会员绑定对公户</button>
+            <button class="nav-btn" onclick="showPage('withdraw-contract')">账户提现签约</button>
         </div>
     </div>
 
@@ -1335,553 +1018,335 @@
                     </div>
                 </div>
 
-                <!-- 企业认证 - 上传法人身份证件页面 -->
-                <div class="page" id="enterprise-auth-upload">
+                <!-- 商户入驻页面 -->
+                <div class="page" id="merchant-register">
                     <div class="header">
                         <button class="back-btn" onclick="showPage('home')">
                             <img src="返回按钮.png" alt="返回">
                         </button>
-                        <span>企业认证</span>
-                        <div style="display: flex; gap: 5px;">
-                            <span style="color: white; font-size: 18px;">⋯</span>
-                            <span style="color: white; background: rgba(255,255,255,0.3); border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 12px;">🔍</span>
-                        </div>
+                        <span>商户入驻</span>
+                        <span></span>
                     </div>
-                    
-                    <div class="step-nav">
-                        <div class="step-item active">
-                            <div class="step-number">1</div>
-                            <div class="step-title">上传法人<br>身份证件</div>
-                        </div>
-                        <div class="step-item">
-                            <div class="step-number">2</div>
-                            <div class="step-title">法人<br>确认信息</div>
-                        </div>
-                        <div class="step-item">
-                            <div class="step-number">3</div>
-                            <div class="step-title">上传<br>营业执照</div>
-                        </div>
-                        <div class="step-item">
-                            <div class="step-number">4</div>
-                            <div class="step-title">绑定<br>账户信息</div>
-                        </div>
-                        <div class="step-item">
-                            <div class="step-number">5</div>
-                            <div class="step-title">企业<br>信息确认</div>
-                        </div>
-                    </div>
-                    
-                    <div class="content">
-                        <h3 style="text-align: center; margin-bottom: 30px; color: #333;">请上传法人身份证的照片</h3>
-                        
-                        <div class="upload-area" onclick="uploadIdCardFront()">
-                            <div class="upload-icon">📷</div>
-                            <div class="upload-text">点击上传人像面</div>
-                        </div>
-                        
-                        <div class="upload-area" onclick="uploadIdCardBack()">
-                            <div class="upload-icon">📷</div>
-                            <div class="upload-text">点击上传国徽面</div>
-                        </div>
-                        
-                        <div class="photo-requirements">
-                            <h4>拍摄照片要求</h4>
-                            <div class="requirements-grid">
-                                <div class="requirement-item recommended">
-                                    <div class="requirement-icon">🎯</div>
-                                    <div class="requirement-text">标准</div>
-                                </div>
-                                <div class="requirement-item">
-                                    <div class="requirement-icon">⚠️</div>
-                                    <div class="requirement-text">边框缺失</div>
-                                </div>
-                                <div class="requirement-item">
-                                    <div class="requirement-icon">⚠️</div>
-                                    <div class="requirement-text">照片模糊</div>
-                                </div>
-                                <div class="requirement-item">
-                                    <div class="requirement-icon">⚠️</div>
-                                    <div class="requirement-text">闪光强烈</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button class="btn-next" onclick="nextEnterpriseAuthStep('enterprise-auth-confirm')">下一步</button>
-                    </div>
-                </div>
-
-                <!-- 企业认证 - 法人确认信息页面 -->
-                <div class="page" id="enterprise-auth-confirm">
-                    <div class="header">
-                        <button class="back-btn" onclick="showPage('enterprise-auth-upload')">
-                            <img src="返回按钮.png" alt="返回">
-                        </button>
-                        <span>企业认证</span>
-                        <div style="display: flex; gap: 5px;">
-                            <span style="color: white; font-size: 18px;">⋯</span>
-                            <span style="color: white; background: rgba(255,255,255,0.3); border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 12px;">🔍</span>
-                        </div>
-                    </div>
-                    
-                    <div class="step-nav">
-                        <div class="step-item completed">
-                            <div class="step-number">✓</div>
-                            <div class="step-title">上传法人<br>身份证件</div>
-                        </div>
-                        <div class="step-item active">
-                            <div class="step-number">2</div>
-                            <div class="step-title">法人<br>确认信息</div>
-                        </div>
-                        <div class="step-item">
-                            <div class="step-number">3</div>
-                            <div class="step-title">上传<br>营业执照</div>
-                        </div>
-                        <div class="step-item">
-                            <div class="step-number">4</div>
-                            <div class="step-title">绑定<br>账户信息</div>
-                        </div>
-                        <div class="step-item">
-                            <div class="step-number">5</div>
-                            <div class="step-title">企业<br>信息确认</div>
-                        </div>
-                    </div>
-                    
-                    <div class="content">
-                        <h3 style="color: #333; margin-bottom: 20px;">上传法人证件照片</h3>
-                        <p style="color: #666; font-size: 14px; margin-bottom: 20px;">拍照时请保持清晰完整，避免反光</p>
-                        
-                        <div class="id-card-preview">
-                            <div class="id-card-image">
-                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDE2MCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iMTAwIiBmaWxsPSIjRjVGNUY1Ii8+Cjx0ZXh0IHg9IjgwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjOTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7orq/ov4nljZXnmoTovoPovaE8L3RleHQ+Cjwvc3ZnPgo=" alt="身份证人像面">
-                            </div>
-                            <div class="id-card-image">
-                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDE2MCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iMTAwIiBmaWxsPSIjRjVGNUY1Ii8+Cjx0ZXh0IHg9IjgwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjOTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7kuK3ljY7kurrmsJHlhbHlkozkm73lm73lvr08L3RleHQ+Cjwvc3ZnPgo=" alt="身份证国徽面">
-                            </div>
-                        </div>
-
-                        <div class="info-card">
-                            <div class="info-row">
-                                <span class="info-label">法人姓名</span>
-                                <span class="info-value">王同章</span>
-                            </div>
-                            <div class="info-row">
-                                <span class="info-label">联系方式</span>
-                                <span class="info-value">15003889509</span>
-                            </div>
-                            <div class="info-row">
-                                <span class="info-label">身份证号</span>
-                                <span class="info-value">413026*******93</span>
-                            </div>
-                            <div class="info-row">
-                                <span class="info-label">证件有效期</span>
-                                <span class="info-value">2024-12-26 ></span>
-                                <span style="color: #999; font-size: 12px; margin-left: auto;">长期</span>
-                            </div>
-                        </div>
-                        
-                        <p style="text-align: center; color: #666; font-size: 14px; margin: 20px 0;">
-                            请确认身份信息，如有错误请<a href="#" style="color: #2196f3; text-decoration: none;">修改</a>
-                        </p>
-                        
-                        <div style="display: flex; gap: 15px; margin-top: 40px;">
-                            <button class="btn-secondary" style="flex: 1; height: 50px; border-radius: 25px; font-size: 16px; font-weight: 500;" onclick="showPage('enterprise-auth-upload')">返回重拍</button>
-                            <button class="btn-next" style="flex: 2; height: 50px; border-radius: 25px; font-size: 16px; font-weight: 500;" onclick="nextEnterpriseAuthStep('enterprise-auth-license')">下一步</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 企业认证 - 上传营业执照页面 -->
-                <div class="page" id="enterprise-auth-license">
-                    <div class="header">
-                        <button class="back-btn" onclick="showPage('enterprise-auth-confirm')">
-                            <img src="返回按钮.png" alt="返回">
-                        </button>
-                        <span>企业认证</span>
-                        <div style="display: flex; gap: 5px;">
-                            <span style="color: white; font-size: 18px;">⋯</span>
-                            <span style="color: white; background: rgba(255,255,255,0.3); border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 12px;">🔍</span>
-                        </div>
-                    </div>
-
-                    <div class="step-nav">
-                        <div class="step-item completed">
-                            <div class="step-number">✓</div>
-                            <div class="step-title">上传法人<br>身份证件</div>
-                        </div>
-                        <div class="step-item completed">
-                            <div class="step-number">✓</div>
-                            <div class="step-title">法人<br>确认信息</div>
-                        </div>
-                        <div class="step-item active">
-                            <div class="step-number">3</div>
-                            <div class="step-title">上传<br>营业执照</div>
-                        </div>
-                        <div class="step-item">
-                            <div class="step-number">4</div>
-                            <div class="step-title">绑定<br>账户信息</div>
-                        </div>
-                        <div class="step-item">
-                            <div class="step-number">5</div>
-                            <div class="step-title">企业<br>信息确认</div>
-                        </div>
-                    </div>
-
-                    <div class="content">
-                        <h3 style="text-align: center; margin-bottom: 10px; color: #333;">请上传营业执照照片</h3>
-                        <p style="text-align: center; color: #666; font-size: 14px; margin-bottom: 30px;">拍照时请保持清晰完整，避免反光</p>
-                        
-                        <div class="upload-area" onclick="uploadLicense()">
-                            <div class="upload-icon">📷</div>
-                            <div class="upload-text">点击上传营业执照</div>
-                        </div>
-                        
-                        <p style="text-align: center; color: #999; font-size: 12px; margin-top: 20px;">
-                            注意事项:请上传上述单位经营时用于经营的营业执新用，请确保清晰性
-                        </p>
-                        
-                        <div style="display: flex; gap: 15px; margin-top: 50px;">
-                            <button class="btn-secondary" style="flex: 1; height: 50px; border-radius: 25px; font-size: 16px; font-weight: 500;" onclick="showPage('enterprise-auth-confirm')">上一步</button>
-                            <button class="btn-next" style="flex: 2; height: 50px; border-radius: 25px; font-size: 16px; font-weight: 500;" onclick="nextEnterpriseAuthStep('enterprise-auth-account')">下一步</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 企业认证 - 绑定账户信息页面 -->
-                <div class="page" id="enterprise-auth-account">
-                    <div class="header">
-                        <button class="back-btn" onclick="showPage('enterprise-auth-license')">
-                            <img src="返回按钮.png" alt="返回">
-                        </button>
-                        <span>企业认证</span>
-                        <div style="display: flex; gap: 5px;">
-                            <span style="color: white; font-size: 18px;">⋯</span>
-                            <span style="color: white; background: rgba(255,255,255,0.3); border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 12px;">🔍</span>
-                        </div>
-                    </div>
-                    
-                    <div class="step-nav">
-                        <div class="step-item completed">
-                            <div class="step-number">✓</div>
-                            <div class="step-title">上传法人<br>身份证件</div>
-                        </div>
-                        <div class="step-item completed">
-                            <div class="step-number">✓</div>
-                            <div class="step-title">法人<br>确认信息</div>
-                        </div>
-                        <div class="step-item completed">
-                            <div class="step-number">✓</div>
-                            <div class="step-title">上传<br>营业执照</div>
-                        </div>
-                        <div class="step-item active">
-                            <div class="step-number">4</div>
-                            <div class="step-title">绑定<br>账户信息</div>
-                        </div>
-                        <div class="step-item">
-                            <div class="step-number">5</div>
-                            <div class="step-title">企业<br>信息确认</div>
-                        </div>
-                    </div>
-                    
                     <div class="content">
                         <div class="info-card">
-                            <h3>账户信息</h3>
+                            <h3>企业基础信息</h3>
                             <div class="form-group">
-                                <label class="form-label required">账户类型</label>
+                                <label class="form-label required">企业全称</label>
+                                <input type="text" class="form-input" placeholder="请输入企业全称" value="内蒙古天翼网络科技有限公司">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">营业执照注册号</label>
+                                <input type="text" class="form-input" placeholder="一般为一个18位或统一社会信用代码" value="91420102544000158">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">企业类型</label>
                                 <select class="form-input">
-                                    <option selected>对公账户</option>
-                                    <option>个人账户</option>
+                                    <option>企业</option>
+                                    <option>个体工商户</option>
+                                    <option>其他</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label class="form-label required">账户名</label>
-                                <input type="text" class="form-input" placeholder="请输入账户名" value="河南XXX科技有限公司">
-                            </div>
-
-                            <div class="form-group">
-                                <label class="form-label required">账户号</label>
-                                <input type="text" class="form-input" placeholder="请输入银行账户号">
+                                <label class="form-label">企业简称</label>
+                                <input type="text" class="form-input" placeholder="内蒙古天翼网络科技" value="内蒙古天翼网络科技">
                             </div>
                             <div class="form-group">
-                                <label class="form-label required">银行预留手机号</label>
-                                <input type="text" class="form-input" placeholder="请输入银行预留手机号">
-                            </div>
-
-                            <div class="form-group">
-                                <label class="form-label required">开户行名称</label>
-                                <input type="text" class="form-input" placeholder="请输入开户行名称">
+                                <label class="form-label required">营业执照注册号</label>
+                                <input type="text" class="form-input" placeholder="914201025440001589" value="914201025440001589">
                             </div>
                             <div class="form-group">
-                                <label class="form-label required">开户行营业市</label>
-                                <input type="text" class="form-input" placeholder="请输入开户行营业市">
+                                <label class="form-label required">企业类型</label>
+                                <input type="text" class="form-input" placeholder="内蒙古" value="内蒙古">
                             </div>
                             <div class="form-group">
-                                <label class="form-label required">开户行支行</label>
-                                <input type="text" class="form-input" placeholder="请输入开户行支行">
+                                <label class="form-label">联系电话</label>
+                                <input type="text" class="form-input" placeholder="18639277800" value="18639277800">
                             </div>
                         </div>
 
-                        <div class="checkbox-group" style="margin-top: 20px;">
-                            <input type="checkbox" id="withdraw-agreement" onclick="handleAgreementCheck(this)">
-                            <label for="withdraw-agreement" class="checkbox-text">
-                                我已阅读并同意<a href="#" onclick="showAgreement()" style="color: #2196f3; text-decoration: none;">《账户提现协议签约》</a>
+                        <div class="info-card">
+                            <h3>法人信息</h3>
+                            <div class="form-group">
+                                <label class="form-label required">法人姓名</label>
+                                <input type="text" class="form-input" placeholder="李华华" value="李华华">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <label class="form-label required">法人身份证正面</label>
+                                    <div style="background: #f8f9fa; border: 2px dashed #ddd; border-radius: 8px; padding: 40px; text-align: center; color: #999;">
+                                        <div style="font-size: 24px; margin-bottom: 10px;">📷</div>
+                                        <div>点击添加图片</div>
+                                    </div>
+                                </div>
+                                <div class="form-col">
+                                    <label class="form-label required">法人身份证反面</label>
+                                    <div style="background: #f8f9fa; border: 2px dashed #ddd; border-radius: 8px; padding: 40px; text-align: center; color: #999;">
+                                        <div style="font-size: 24px; margin-bottom: 10px;">📷</div>
+                                        <div>点击添加图片</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">法人大类</label>
+                                <input type="text" class="form-input" placeholder="王三华" value="王三华">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">法人身份证号</label>
+                                <input type="text" class="form-input" placeholder="420234197711100623" value="420234197711100623">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">法人手机</label>
+                                <input type="text" class="form-input" placeholder="18686863888" value="18686863888">
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <h3>账户信息</h3>
+                            <div class="form-group">
+                                <label class="form-label">账户类型</label>
+                                <input type="text" class="form-input" value="对公" readonly class="readonly">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">账户名</label>
+                                <input type="text" class="form-input" value="内蒙古天翼网络科技有限公司" readonly class="readonly">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">账户号</label>
+                                <input type="text" class="form-input" placeholder="621245000000008217" value="621245000000008217">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">开户银行编号</label>
+                                <input type="text" class="form-input" placeholder="1311111111" value="1311111111">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">开户银行名称</label>
+                                <input type="text" class="form-input" value="中国工商银行" readonly class="readonly">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">开户银行地址</label>
+                                <input type="text" class="form-input" placeholder="内蒙古" value="内蒙古">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">开户银行支行</label>
+                                <input type="text" class="form-input" value="中国工商银行新疆乌鲁木齐河马泉支行" readonly class="readonly">
+                            </div>
+                        </div>
+
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="agreement">
+                            <label for="agreement" class="checkbox-text">
+                                我已阅读并同意《<a href="#">开通通联支付体系账户协议</a>》
                             </label>
                         </div>
 
-                        <div style="display: flex; gap: 15px; margin-top: 40px;">
-                            <button class="btn-secondary" style="flex: 1; height: 50px; border-radius: 25px; font-size: 16px; font-weight: 500;" onclick="showPage('enterprise-auth-license')">上一步</button>
-                            <button class="btn-next" style="flex: 2; height: 50px; border-radius: 25px; font-size: 16px; font-weight: 500;" onclick="validateAndNext()">下一步</button>
-                        </div>
+                        <button class="btn-next" onclick="showPage('tonglian-member')">确认</button>
                     </div>
                 </div>
 
-                <!-- 企业认证 - 营业执照信息确认页面 -->
-                <div class="page" id="enterprise-auth-license-confirm">
+                <!-- 开通通联会员页面 -->
+                <div class="page" id="tonglian-member">
                     <div class="header">
-                        <button class="back-btn" onclick="showPage('enterprise-auth-license')">
+                        <button class="back-btn" onclick="showPage('merchant-register')">
                             <img src="返回按钮.png" alt="返回">
                         </button>
-                        <span>企业认证</span>
-                        <div style="display: flex; gap: 5px;">
-                            <span style="color: white; font-size: 18px;">⋯</span>
-                            <span style="color: white; background: rgba(255,255,255,0.3); border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 12px;">🔍</span>
-                        </div>
-                    </div>
-                    
-                    <div class="step-nav">
-                        <div class="step-item completed">
-                            <div class="step-number">✓</div>
-                            <div class="step-title">上传法人<br>身份证件</div>
-                        </div>
-                        <div class="step-item completed">
-                            <div class="step-number">✓</div>
-                            <div class="step-title">法人<br>确认信息</div>
-                        </div>
-                        <div class="step-item completed">
-                            <div class="step-number">✓</div>
-                            <div class="step-title">上传<br>营业执照</div>
-                        </div>
-                        <div class="step-item completed">
-                            <div class="step-number">✓</div>
-                            <div class="step-title">绑定<br>账户信息</div>
-                        </div>
-                        <div class="step-item active">
-                            <div class="step-number">5</div>
-                            <div class="step-title">企业<br>信息确认</div>
-                        </div>
-                    </div>
-                    
-                    <div class="content">
-                        <h3 style="color: #333; margin-bottom: 10px;">请上传营业执照照片</h3>
-                        <p style="color: #666; font-size: 14px; margin-bottom: 20px;">拍照时请保持清晰完整，避免反光</p>
-                        
-                        <div class="license-preview">
-                            <img class="license-image" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjRkZGOEUxIiBzdHJva2U9IiNGRkMxMDciIHN0cm9rZS13aWR0aD0iMiIvPgo8dGV4dCB4PSIxNTAiIHk9IjQwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMzMzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7okKXkuJrmiafnhafpo5hmaWxsPSIjMzMzIj7okKXkuJrmiafnhafkuJE8L3RleHQ+Cjx0ZXh0IHg9IjE1MCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPueZveS7o+WbvuaYvkNvbnRlbnQ8L3RleHQ+CjxyZWN0IHg9IjIwMCIgeT0iMTIwIiB3aWR0aD0iODAiIGhlaWdodD0iNjAiIGZpbGw9IiNFRUUiLz4KPHR2cHQgeD0iMjQwIiB5PSIxNTUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UVLnoIE8L3RleHQ+Cjwvc3ZnPgo=" alt="营业执照">
-                        </div>
-                        
-                        <div class="info-card">
-                            <div class="info-row">
-                                <span class="info-label">名  称</span>
-                                <span class="info-value">河南XXX科技有限公司</span>
-                            </div>
-                            <div class="info-row">
-                                <span class="info-label">类  型</span>
-                                <span class="info-value">有限公司</span>
-                            </div>
-                            <div class="info-row">
-                                <span class="info-label">负责人</span>
-                                <span class="info-value">王XX</span>
-                            </div>
-                            <div class="info-row">
-                                <span class="info-label">成立日期</span>
-                                <span class="info-value">2022年XX月XX日</span>
-                            </div>
-                        </div>
-                        
-                        <p style="text-align: center; color: #666; font-size: 14px; margin: 20px 0;">
-                            请确认营业执照信息，如有错误请<a href="#" style="color: #2196f3; text-decoration: none;">修改</a>
-                        </p>
-                        
-                        <div style="display: flex; gap: 15px; margin-top: 40px;">
-                            <button class="btn-secondary" style="flex: 1; height: 50px; border-radius: 25px; font-size: 16px; font-weight: 500;" onclick="showPage('enterprise-auth-account')">上一步</button>
-                            <button class="btn-next" style="flex: 2; height: 50px; border-radius: 25px; font-size: 16px; font-weight: 500; background: #2196F3;" onclick="nextEnterpriseAuthStep('enterprise-auth-reviewing')">提交</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 企业认证 - 审核中页面 -->
-                <div class="page" id="enterprise-auth-reviewing">
-                    <div class="header">
-                        <button class="back-btn" onclick="showPage('home')">
-                            <img src="返回按钮.png" alt="返回">
-                        </button>
-                        <span>企业认证</span>
-                        <div style="display: flex; gap: 5px;">
-                            <span style="color: white; font-size: 18px;">⋯</span>
-                            <span style="color: white; background: rgba(255,255,255,0.3); border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 12px;">🔍</span>
-                        </div>
-                    </div>
-
-                    <div class="step-nav">
-                        <div class="step-item completed">
-                            <div class="step-number">✓</div>
-                            <div class="step-title">上传法人<br>身份证件</div>
-                        </div>
-                        <div class="step-item completed">
-                            <div class="step-number">✓</div>
-                            <div class="step-title">法人<br>确认信息</div>
-                        </div>
-                        <div class="step-item completed">
-                            <div class="step-number">✓</div>
-                            <div class="step-title">上传<br>营业执照</div>
-                        </div>
-                        <div class="step-item completed">
-                            <div class="step-number">✓</div>
-                            <div class="step-title">绑定<br>账户信息</div>
-                        </div>
-                        <div class="step-item active">
-                            <div class="step-number">5</div>
-                            <div class="step-title">企业<br>信息确认</div>
-                        </div>
-                    </div>
-                    
-                    <div class="content">
-                        <div class="auth-status">
-                            <div class="status-icon reviewing">🕐</div>
-                            <div class="status-title">企业信息审要确认</div>
-                            <div class="status-subtitle">认证中</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 企业认证 - 认证通过页面 -->
-                <div class="page" id="enterprise-auth-success">
-                    <div class="header">
-                        <button class="back-btn" onclick="showPage('home')">
-                            <img src="返回按钮.png" alt="返回">
-                        </button>
-                        <span>企业认证</span>
-                        <div style="display: flex; gap: 5px;">
-                            <span style="color: white; font-size: 18px;">⋯</span>
-                            <span style="color: white; background: rgba(255,255,255,0.3); border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 12px;">🔍</span>
-                        </div>
-                    </div>
-                    
-                    <div class="step-nav">
-                        <div class="step-item completed">
-                            <div class="step-number">✓</div>
-                            <div class="step-title">上传法人<br>身份证件</div>
-                        </div>
-                        <div class="step-item completed">
-                            <div class="step-number">✓</div>
-                            <div class="step-title">法人<br>确认信息</div>
-                        </div>
-                        <div class="step-item completed">
-                            <div class="step-number">✓</div>
-                            <div class="step-title">上传<br>营业执照</div>
-                        </div>
-                        <div class="step-item completed">
-                            <div class="step-number">✓</div>
-                            <div class="step-title">绑定<br>账户信息</div>
-                        </div>
-                        <div class="step-item completed">
-                            <div class="step-number">✓</div>
-                            <div class="step-title">企业<br>信息确认</div>
-                        </div>
-                    </div>
-                    
-                    <div class="content">
-                        <div class="auth-status">
-                            <div class="status-icon success">✓</div>
-                            <div class="status-title">认证通过</div>
-                        </div>
-                        
-                        <button class="btn-next" onclick="showPage('shop-setup')" style="margin-top: 100px;">填写店铺信息</button>
-                    </div>
-                </div>
-
-                <!-- 账户提现协议页面 -->
-                <div class="page" id="withdraw-agreement-page">
-                    <div class="header">
-                        <button class="back-btn" onclick="closeAgreement()">
-                            <img src="返回按钮.png" alt="返回">
-                        </button>
-                        <span>账户提现协议签约</span>
+                        <span>开通通联会员</span>
                         <span></span>
                     </div>
                     
-                    <div class="content" style="padding: 15px; line-height: 1.6;">
-                        <div style="max-height: 600px; overflow-y: auto; padding-right: 10px;">
-                            <h3 style="text-align: center; margin-bottom: 20px;">账户提现协议签约</h3>
-                            
-                            <p><strong>甲方:</strong> 云农谷平台商户</p>
-                            <p><strong>乙方:</strong> 云农谷平台</p>
-                            <p><strong>丙方:</strong> 通联支付网络服务股份有限公司</p>
-                            
-                            <p style="margin-top: 15px;">甲方（以下或称"您"）为在乙方平台成功注册的用户，乙方为依法注册的向甲方提供系统、平台、业务管理等服务（具体服务内容由甲乙双方约定）的工商企业，丙方通联支付网络服务股份有限公司为依法成立并提供综合科技服务的工商企业。基于乙丙双方已签署的基于大数据的商户服务平台（即通联云商通）系统服务协议（以下称"《合作协议》"），丙方根据《合作协议》约定为乙方提供交易记账系统服务。甲方作为乙方平台用户使用乙方平台接入的该交易记账服务，签署本协议后受本协议的约束。</p>
-                            
-                            <p style="margin-top: 15px;"><strong>请您（即"甲方"）先仔细阅读本协议内容，尤其是字体加粗部分。如您对本协议内容或页面提示信息有疑问，请勿进行下一步操作。您通过页面点击或其他方式确认即表示您已同意本协议的全部内容，自您确认时起本协议即对协议各方具有法律约束力。</strong></p>
-                            
-                            <h4 style="margin-top: 20px; color: #333;">第一条 释义：</h4>
-                            <p>1、云商通系统是丙方提供给乙方用于交易记账的账簿系统，主要功能包括明细账目开立、绑卡、解绑卡、查询、交易记账、清算对账等。</p>
-                            <p>2、甲方明细账目指乙方通过丙方为乙方提供的账簿系统功能在乙方平台为甲方设立的账目，该账目用于记录甲方使用乙方平台和服务期间委托乙方代为收取和归集的货款，或乙方基于甲乙双方业务合作应向甲方支付的款项等基于甲乙双方之间的业务合作已达成约定的交易资金明细。</p>
-                            <p>3、查询是指甲方通过乙方的业务平台查询明细账目的相关信息。</p>
-                            
-                            <h4 style="margin-top: 20px; color: #333;">第二条 甲方权利与义务</h4>
-                            <p>1、甲方应自觉遵守国家有关互联网发展和管理的法律、法规和政策；甲方不得从事淫秽色情、聚众赌博、非法套现、洗钱、恐怖融资等国家明令禁止的经营活动，不得销售和提供不符合国家法律法规的商品和服务，甲方承诺不存在法律、法规、规章及其他规范性文件和乙方交易规则禁止或限制其在乙方进行交易的情形。</p>
-                            <p>2、甲方保证其向乙方、丙方提供的所有信息、证件、资料均合法、真实、准确、完整和有效。甲方资料发生变化时，甲方必须及时通知乙方和丙方。</p>
-                            <p>3、甲方承诺其资金来源合法合规，委托乙方收取或应向乙方收取的款项均具备相应的业务和贸易背景，不存在资金来源、应收款不合法合规的情形。</p>
-                            
-                            <h4 style="margin-top: 20px; color: #333;">第三条 乙方权利与义务</h4>
-                            <p>1、乙方是依法设立的企业，具有开展相关业务的资质，对于因资质问题导致的所有法律后果应承担全部责任。</p>
-                            <p>2、乙方保证在丙方注册的甲方及交易的真实性和合法性，不存在任何虚假商户、个人及产品或服务，不存在故意隐瞒交易项目重大瑕疵等损害消费者或投资人合法权益的情形，并承担由此而可能引发的经济及法律责任。</p>
-                            
-                            <h4 style="margin-top: 20px; color: #333;">第四条 丙方权利与义务</h4>
-                            <p>1、丙方承诺及时、准确、有效的执行乙方的指令，丙方仅按照向乙方提供云商通系统服务期间未按乙方系统发送的指令进行操作等因丙方过错承担相应责任。</p>
-                            <p>2、因法律法规变化、监管部门的监管要求等，导致丙方不能履行服务义务的，丙方有权在书面通知乙方后解除本协议，丙方不承担任何责任。</p>
-                            
-                            <h4 style="margin-top: 20px; color: #333;">第五条 争议的解决</h4>
-                            <p>1、因本协议引起的或与本协议有关的任何争议，由协议签订各方协商解决；协商不成的，任何一方均有权向丙方所在地法院起诉。争议期间，各方仍应履行未涉争议的条款。</p>
-                            
-                            <h4 style="margin-top: 20px; color: #333;">第六条 附 则</h4>
-                            <p>1、因地震、台风、水灾、火灾、战争及其他不可抗力因素导致的甲方损失，乙方、丙方均不承担任何赔偿责任。</p>
-                            <p>2、因乙方、丙方不可预测或无法控制的系统故障、设备故障、通讯故障、停电等突发事故，给甲方造成的损失，乙方、丙方不承担任何赔偿责任。</p>
-                            <p>3、本协议经由乙方提供的平台向甲方进行展示，并由甲方通过页面点击或其他方式进行确认后，即对各方产生法律约束力。</p>
+                    <div class="step-nav">
+                        <div class="step-item active completed">
+                            <div class="step-number">1</div>
+                            <div class="step-title">基础信息填报</div>
                         </div>
-                        
-                        <button class="btn-next" onclick="closeAgreement()" style="margin-top: 20px;">我已阅读</button>
+                        <div class="step-item active">
+                            <div class="step-number">2</div>
+                            <div class="step-title">企业会员绑定对公户</div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">3</div>
+                            <div class="step-title">账户提现签约</div>
+                        </div>
+                    </div>
+                    
+                    <div class="content">
+                        <div class="info-card">
+                            <h3>基础信息</h3>
+                            <div class="form-group">
+                                <label class="form-label required">注册手机号</label>
+                                <input type="text" class="form-input readonly" value="18639277800" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">企业类型</label>
+                                <select class="form-input">
+                                    <option selected>企业</option>
+                                    <option>个体工商户</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">企业名称</label>
+                                <input type="text" class="form-input readonly" value="内蒙古天翼网络科技有限公司" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">企业简称</label>
+                                <input type="text" class="form-input readonly" value="内蒙古天翼网络科技" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">营业执照注册号</label>
+                                <input type="text" class="form-input readonly" value="914201025440001589" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label required">企业类型</label>
+                                <input type="text" class="form-input readonly" value="内蒙古" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">联系电话</label>
+                                <input type="text" class="form-input readonly" value="18639277800" readonly>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <h3>法人信息</h3>
+                            <div class="form-group">
+                                <label class="form-label required">法人姓名</label>
+                                <input type="text" class="form-input readonly" value="王华权" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">法人身份证件</label>
+                                <input type="text" class="form-input readonly" value="王三华" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">法人身份证号</label>
+                                <input type="text" class="form-input readonly" value="420234197711100623" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">法人手机</label>
+                                <input type="text" class="form-input readonly" value="18686863888" readonly>
+                            </div>
+                        </div>
+
+                        <button class="btn-next" onclick="nextStep('bind-account')">下一步</button>
                     </div>
                 </div>
 
-                <!-- 手机号验证弹窗 -->
-                <div class="page" id="verification-modal" style="display: none;">
+                <!-- 企业会员绑定对公户页面 -->
+                <div class="page" id="bind-account">
                     <div class="header">
-                        <button class="back-btn" onclick="closeVerificationModal()">
+                        <button class="back-btn" onclick="showPage('tonglian-member')">
                             <img src="返回按钮.png" alt="返回">
                         </button>
-                        <span>手机号验证</span>
-                        <button class="modal-close-btn" onclick="closeVerificationModal()">×</button>
+                        <span>企业会员绑定对公户</span>
+                        <span></span>
                     </div>
                     
-                    <div class="content" style="padding: 30px 20px;">
-                        <div class="verification-container">
-                            <div class="form-group" style="margin-bottom: 25px;">
-                                <label class="form-label" style="font-size: 16px; color: #333; margin-bottom: 8px; display: block;">手机号</label>
-                                <input type="text" class="form-input" id="verification-phone" value="138****9509" readonly style="background-color: #f5f5f5; height: 48px; padding: 12px 16px;">
+                    <div class="step-nav">
+                        <div class="step-item completed">
+                            <div class="step-number">✓</div>
+                            <div class="step-title">基础信息填报</div>
+                        </div>
+                        <div class="step-item active">
+                            <div class="step-number">2</div>
+                            <div class="step-title">企业会员绑定对公户</div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">3</div>
+                            <div class="step-title">账户提现签约</div>
+                        </div>
+                    </div>
+                    
+                    <div class="content">
+                        <div class="info-card">
+                            <h3>对公账户信息</h3>
+                            <div class="form-group">
+                                <label class="form-label">账户类型</label>
+                                <input type="text" class="form-input readonly" value="对公" readonly>
                             </div>
-                            
-                            <div class="form-group" style="margin-bottom: 30px;">
-                                <label class="form-label" style="font-size: 16px; color: #333; margin-bottom: 8px; display: block;">验证码</label>
-                                <div style="display: flex; gap: 12px; align-items: center;">
-                                    <input type="text" class="form-input" id="verification-code" placeholder="请输入验证码" style="flex: 1; height: 48px; padding: 12px 16px;">
-                                    <button class="send-code-btn" onclick="sendVerificationCode()">发送验证码</button>
+                            <div class="form-group">
+                                <label class="form-label">账户名</label>
+                                <input type="text" class="form-input readonly" value="内蒙古天翼网络科技有限公司" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">账户号</label>
+                                <input type="text" class="form-input readonly" value="621245000000008217" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">开户银行编号</label>
+                                <input type="text" class="form-input readonly" value="1311111111" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">开户银行名称</label>
+                                <input type="text" class="form-input readonly" value="中国工商银行" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">开户银行地址</label>
+                                <input type="text" class="form-input readonly" value="内蒙古" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label required">开户银行支行</label>
+                                <input type="text" class="form-input readonly" value="中国工商银行新疆乌鲁木齐河马泉支行" readonly>
+                            </div>
+                        </div>
+
+                        <button class="btn-next" onclick="nextStep('withdraw-contract')">下一步</button>
+                    </div>
+                </div>
+
+                <!-- 账户提现签约页面 -->
+                <div class="page" id="withdraw-contract">
+                    <div class="header">
+                        <button class="back-btn" onclick="showPage('bind-account')">
+                            <img src="返回按钮.png" alt="返回">
+                        </button>
+                        <span>账户提现签约</span>
+                        <span></span>
+                    </div>
+                    
+                    <div class="step-nav">
+                        <div class="step-item completed">
+                            <div class="step-number">✓</div>
+                            <div class="step-title">基础信息填报</div>
+                        </div>
+                        <div class="step-item completed">
+                            <div class="step-number">✓</div>
+                            <div class="step-title">企业会员绑定对公户</div>
+                        </div>
+                        <div class="step-item active">
+                            <div class="step-number">3</div>
+                            <div class="step-title">账户提现签约</div>
+                        </div>
+                    </div>
+                    
+                    <div class="content">
+                        <div class="info-card">
+                            <h3>签约信息确认</h3>
+                            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                    <span>企业名称：</span>
+                                    <span>内蒙古天翼网络科技有限公司</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                    <span>法人姓名：</span>
+                                    <span>王华权</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                    <span>对公账户：</span>
+                                    <span>621245000000008217</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span>开户银行：</span>
+                                    <span>中国工商银行</span>
                                 </div>
                             </div>
                             
-                            <div class="verification-buttons">
-                                <button class="cancel-btn" onclick="closeVerificationModal()">取消</button>
-                                <button class="confirm-btn" onclick="verifyCode()">确认</button>
+                            <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                                <h4 style="color: #4CAF50; margin-bottom: 10px;">✓ 签约成功</h4>
+                                <p style="color: #333; margin-bottom: 5px;">恭喜您已成功完成账户提现签约！</p>
+                                <p style="color: #666; font-size: 14px;">现在您可以正常使用提现功能</p>
                             </div>
                         </div>
+
+                        <button class="btn-next" onclick="showPage('home')" style="background: #2196F3;">完成</button>
                     </div>
                 </div>
             </div>
@@ -1928,7 +1393,7 @@
             }
 
             // 商户端页面需要展开商户端菜单
-            const merchantPages = ['enterprise-auth-upload', 'enterprise-auth-confirm', 'enterprise-auth-license', 'enterprise-auth-account', 'enterprise-auth-license-confirm', 'enterprise-auth-reviewing', 'enterprise-auth-success'];
+            const merchantPages = ['merchant-register', 'tonglian-member', 'bind-account', 'withdraw-contract'];
             if (merchantPages.includes(pageId)) {
                 const merchantCategory = document.getElementById('merchant-category');
                 const merchantCategoryBtn = document.querySelector('[onclick*="merchant-category"]');
@@ -1940,8 +1405,10 @@
                     arrow.textContent = '▼';
                 }
                 
-                // 同时更新企业认证步骤导航
-                updateEnterpriseAuthStepNavigation(pageId);
+                // 同时更新步骤导航
+                if (pageId !== 'merchant-register') {
+                    updateStepNavigation(pageId);
+                }
             }
         }
 
@@ -1993,22 +1460,18 @@
             showPage('refund-success');
         }
 
-        // 企业认证步骤切换
-        function nextEnterpriseAuthStep(nextPageId) {
+        // 商户端步骤切换
+        function nextStep(nextPageId) {
             showPage(nextPageId);
-            updateEnterpriseAuthStepNavigation(nextPageId);
+            updateStepNavigation(nextPageId);
         }
 
-        // 更新企业认证步骤导航状态
-        function updateEnterpriseAuthStepNavigation(currentPageId) {
+        // 更新步骤导航状态
+        function updateStepNavigation(currentPageId) {
             const stepMapping = {
-                'enterprise-auth-upload': 1,
-                'enterprise-auth-confirm': 2,
-                'enterprise-auth-license': 3,
-                'enterprise-auth-account': 4,
-                'enterprise-auth-license-confirm': 5,
-                'enterprise-auth-reviewing': 5,
-                'enterprise-auth-success': 5
+                'tonglian-member': 1,
+                'bind-account': 2,
+                'withdraw-contract': 3
             };
             
             const currentStep = stepMapping[currentPageId];
@@ -2017,172 +1480,30 @@
             // 更新所有步骤状态
             document.querySelectorAll('.step-nav').forEach(nav => {
                 const steps = nav.querySelectorAll('.step-item');
-                if (steps.length === 5) { // 确保是企业认证的导航
-                    steps.forEach((step, index) => {
-                        const stepNumber = index + 1;
-                        const numberEl = step.querySelector('.step-number');
-                        
-                        // 清除所有状态类
-                        step.classList.remove('active', 'completed');
-                        
-                        if (stepNumber < currentStep) {
-                            // 已完成的步骤
-                            step.classList.add('completed');
-                            numberEl.textContent = '✓';
-                        } else if (stepNumber === currentStep) {
-                            // 当前步骤
-                            if (currentPageId === 'enterprise-auth-success') {
-                                step.classList.add('completed');
-                                numberEl.textContent = '✓';
-                            } else {
-                                step.classList.add('active');
-                                numberEl.textContent = stepNumber;
-                            }
-                        } else {
-                            // 未完成的步骤
-                            numberEl.textContent = stepNumber;
-                        }
-                    });
-                }
+                steps.forEach((step, index) => {
+                    const stepNumber = index + 1;
+                    const numberEl = step.querySelector('.step-number');
+                    
+                    // 清除所有状态类
+                    step.classList.remove('active', 'completed');
+                    
+                    if (stepNumber < currentStep) {
+                        // 已完成的步骤
+                        step.classList.add('completed');
+                        numberEl.textContent = '✓';
+                    } else if (stepNumber === currentStep) {
+                        // 当前步骤
+                        step.classList.add('active');
+                        numberEl.textContent = stepNumber;
+                    } else {
+                        // 未完成的步骤
+                        numberEl.textContent = stepNumber;
+                    }
+                });
             });
-        }
-
-        // 上传身份证正面
-        function uploadIdCardFront() {
-            alert('正在模拟上传身份证人像面...');
-            // 这里可以添加实际的文件上传逻辑
-        }
-
-        // 上传身份证反面
-        function uploadIdCardBack() {
-            alert('正在模拟上传身份证国徽面...');
-            // 这里可以添加实际的文件上传逻辑
-        }
-
-        // 上传营业执照
-        function uploadLicense() {
-            alert('正在模拟上传营业执照...');
-            // 这里可以添加实际的文件上传逻辑
-        }
-
-        // 显示协议页面
-        function showAgreement() {
-            showPage('withdraw-agreement-page');
-        }
-
-        // 关闭协议页面
-        function closeAgreement() {
-            showPage('enterprise-auth-account');
-        }
-
-        // 处理协议复选框点击
-        function handleAgreementCheck(checkbox) {
-            if (checkbox.checked) {
-                // 勾选时立即弹出验证窗口
-                showVerificationModal();
-            }
-        }
-
-        // 验证并进入下一步
-        function validateAndNext() {
-            const checkbox = document.getElementById('withdraw-agreement');
-            
-            if (!checkbox.checked) {
-                alert('请先阅读并同意《账户提现协议签约》');
-                return;
-            }
-            
-            // 直接进入下一步（因为验证已在勾选时完成）
-            nextEnterpriseAuthStep('enterprise-auth-license-confirm');
-        }
-
-        // 显示手机号验证弹窗
-        function showVerificationModal() {
-            // 隐藏当前页面
-            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-            // 显示验证弹窗
-            document.getElementById('verification-modal').classList.add('active');
-            document.getElementById('verification-modal').style.display = 'block';
-        }
-
-        // 关闭手机号验证弹窗
-        function closeVerificationModal() {
-            const checkbox = document.getElementById('withdraw-agreement');
-            const code = document.getElementById('verification-code').value;
-            
-            // 如果没有成功验证就关闭弹窗，取消勾选
-            if (code !== '123456') {
-                checkbox.checked = false;
-            }
-            
-            // 隐藏验证弹窗
-            document.getElementById('verification-modal').classList.remove('active');
-            document.getElementById('verification-modal').style.display = 'none';
-            document.getElementById('verification-code').value = '';
-            
-            // 返回到绑定账户页面
-            showPage('enterprise-auth-account');
-        }
-
-        // 发送验证码
-        function sendVerificationCode() {
-            alert('验证码已发送到您的手机');
-            // 这里可以添加实际的验证码发送逻辑
-        }
-
-        // 验证验证码
-        function verifyCode() {
-            const code = document.getElementById('verification-code').value;
-            const checkbox = document.getElementById('withdraw-agreement');
-            
-            if (!code) {
-                alert('请输入验证码');
-                return;
-            }
-            
-            if (code === '123456') {
-                // 验证成功
-                closeVerificationModal();
-                showToast('验证通过！');
-                
-                // 保持复选框勾选状态，表示协议已确认且验证通过
-                checkbox.checked = true;
-                checkbox.disabled = true; // 禁用复选框，防止重复验证
-                
-            } else {
-                alert('验证码错误，请重新输入');
-                // 验证失败，取消勾选
-                checkbox.checked = false;
-            }
-        }
-
-        // 显示Toast提示
-        function showToast(message) {
-            // 创建toast元素
-            const toast = document.createElement('div');
-            toast.style.cssText = `
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background: rgba(0, 0, 0, 0.8);
-                color: white;
-                padding: 15px 20px;
-                border-radius: 8px;
-                font-size: 16px;
-                z-index: 2000;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            `;
-            toast.textContent = message;
-            
-            document.body.appendChild(toast);
-            
-            // 3秒后自动移除
-            setTimeout(() => {
-                document.body.removeChild(toast);
-            }, 1500);
         }
     </script>
 </body>
 </html> 
-
+</html> 
+</html> 
