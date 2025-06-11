@@ -1477,6 +1477,10 @@
                                 <span class="info-value">2024-12-26 ></span>
                                 <span style="color: #999; font-size: 12px; margin-left: auto;">长期</span>
                             </div>
+                            <div class="form-group" style="margin-top: 15px;">
+                                <label class="form-label required">法人手机号</label>
+                                <input type="tel" class="form-input" id="legal-person-phone" placeholder="请输入法人手机号" required>
+                            </div>
                         </div>
                         
                         <p style="text-align: center; color: #666; font-size: 14px; margin: 20px 0;">
@@ -1485,7 +1489,7 @@
                         
                         <div style="display: flex; gap: 15px; margin-top: 40px; align-items: center;">
                             <button class="btn-secondary" style="flex: 1; height: 50px; border-radius: 25px; font-size: 16px; font-weight: 500; margin: 0;" onclick="showPage('enterprise-auth-upload')">返回重拍</button>
-                            <button class="btn-next" style="flex: 2; height: 50px; border-radius: 25px; font-size: 16px; font-weight: 500; margin: 0;" onclick="nextEnterpriseAuthStep('enterprise-auth-license')">下一步</button>
+                            <button class="btn-next" style="flex: 2; height: 50px; border-radius: 25px; font-size: 16px; font-weight: 500; margin: 0;" onclick="validateLegalPersonInfo()">下一步</button>
                         </div>
                     </div>
                 </div>
@@ -1587,14 +1591,13 @@
                             <h3>账户信息</h3>
                             <div class="form-group">
                                 <label class="form-label required">账户类型</label>
-                                <select class="form-input">
+                                <select class="form-input" disabled style="background-color: #f5f5f5; color: #999;">
                                     <option selected>对公账户</option>
-                                    <option>个人账户</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label class="form-label required">账户名</label>
-                                <input type="text" class="form-input" placeholder="请输入账户名" value="河南XXX科技有限公司">
+                                <input type="text" class="form-input" value="河南XXX科技有限公司商户" readonly style="background-color: #f5f5f5; color: #666;">
                             </div>
 
                             <div class="form-group">
@@ -1602,7 +1605,7 @@
                                 <input type="text" class="form-input" placeholder="请输入银行账户号">
                             </div>
                             <div class="form-group">
-                                <label class="form-label required">银行预留手机号</label>
+                                <label class="form-label">银行预留手机号</label>
                                 <input type="text" class="form-input" placeholder="请输入银行预留手机号">
                             </div>
 
@@ -1611,12 +1614,19 @@
                                 <input type="text" class="form-input" placeholder="请输入开户行名称">
                             </div>
                             <div class="form-group">
-                                <label class="form-label required">开户行营业市</label>
-                                <input type="text" class="form-input" placeholder="请输入开户行营业市">
+                                <label class="form-label required">开户行省市</label>
+                                <div style="display: flex; gap: 10px;">
+                                    <select class="form-input" style="flex: 1;">
+                                        <option value="">请选择省</option>
+                                    </select>
+                                    <select class="form-input" style="flex: 1;">
+                                        <option value="">请选择市</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label class="form-label required">开户行支行</label>
-                                <input type="text" class="form-input" placeholder="请输入开户行支行">
+                                <input type="text" class="form-input" placeholder="请输入支行名称关键字搜索，如未搜索到指定支行,可选任意支行提交，之后联系运营修改">
                             </div>
                         </div>
 
@@ -1718,10 +1728,7 @@
                             <img src="返回按钮.png" alt="返回">
                         </button>
                         <span>企业认证</span>
-                        <div style="display: flex; gap: 5px;">
-                            <span style="color: white; font-size: 18px;">⋯</span>
-                            <span style="color: white; background: rgba(255,255,255,0.3); border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 12px;">🔍</span>
-                        </div>
+                        <span></span>
                     </div>
 
                     <div class="step-nav">
@@ -1763,10 +1770,7 @@
                             <img src="返回按钮.png" alt="返回">
                         </button>
                         <span>企业认证</span>
-                        <div style="display: flex; gap: 5px;">
-                            <span style="color: white; font-size: 18px;">⋯</span>
-                            <span style="color: white; background: rgba(255,255,255,0.3); border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 12px;">🔍</span>
-                        </div>
+                        <span></span>
                     </div>
                     
                     <div class="step-nav">
@@ -2086,6 +2090,29 @@
                 // 勾选时立即弹出验证窗口
                 showVerificationModal();
             }
+        }
+
+        // 验证法人信息
+        function validateLegalPersonInfo() {
+            const phoneInput = document.getElementById('legal-person-phone');
+            const phone = phoneInput.value.trim();
+            
+            if (!phone) {
+                alert('请输入法人手机号');
+                phoneInput.focus();
+                return;
+            }
+            
+            // 简单的手机号格式验证
+            const phoneRegex = /^1[3-9]\d{9}$/;
+            if (!phoneRegex.test(phone)) {
+                alert('请输入正确的手机号格式');
+                phoneInput.focus();
+                return;
+            }
+            
+            // 验证通过，进入下一步
+            nextEnterpriseAuthStep('enterprise-auth-license');
         }
 
         // 验证并进入下一步
