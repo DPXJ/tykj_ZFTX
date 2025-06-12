@@ -845,6 +845,23 @@
             <button class="nav-btn" onclick="showPage('enterprise-auth-reviewing')">审核中</button>
             <button class="nav-btn" onclick="showPage('enterprise-auth-success')">认证通过</button>
         </div>
+
+        <div class="nav-category" onclick="toggleCategory('wallet-category')">
+            <span>云农谷钱包</span>
+            <span class="category-arrow">▶</span>
+        </div>
+        <div class="nav-submenu" id="wallet-category">
+            <button class="nav-btn" onclick="showPage('wallet-overview')">账户概览</button>
+            <button class="nav-btn" onclick="showPage('wallet-balance')">钱包余额详情</button>
+            <button class="nav-btn" onclick="showPage('wallet-transactions')">账单流水</button>
+            <button class="nav-btn" onclick="showPage('wallet-bank-manage')">银行账户管理</button>
+            <button class="nav-btn" onclick="showPage('wallet-withdraw')">资金提现</button>
+            <button class="nav-btn" onclick="showPage('wallet-recharge')">账户充值</button>
+            <button class="nav-btn" onclick="showPage('wallet-auth')">实名与认证</button>
+            <button class="nav-btn" onclick="showPage('wallet-security')">安全中心</button>
+            <button class="nav-btn" onclick="showPage('wallet-messages')">消息通知</button>
+            <button class="nav-btn" onclick="showPage('wallet-help')">帮助与客服</button>
+        </div>
     </div>
 
     <div class="phone-container">
@@ -1878,6 +1895,909 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- 云农谷钱包 - 账户概览页面 -->
+                <div class="page" id="wallet-overview">
+                    <div class="header">
+                        <button class="back-btn" onclick="showPage('home')">
+                            <img src="返回按钮.png" alt="返回">
+                        </button>
+                        <span>云农谷钱包</span>
+                        <span></span>
+                    </div>
+                    
+                    <div class="content">
+                        <!-- 资金概览卡片 -->
+                        <div style="background: linear-gradient(135deg, #4CAF50, #81C784); border-radius: 15px; padding: 25px; color: white; margin-bottom: 20px;">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+                                <div>
+                                    <div style="font-size: 14px; opacity: 0.9; margin-bottom: 5px;">总资产(元)</div>
+                                    <div style="font-size: 32px; font-weight: bold;">28,568.00</div>
+                                </div>
+                                <div style="background: rgba(255,255,255,0.2); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 20px;">💳</div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <div style="text-align: center;">
+                                    <div style="font-size: 18px; font-weight: bold;">25,800.00</div>
+                                    <div style="font-size: 12px; opacity: 0.8;">可用余额</div>
+                                </div>
+                                <div style="text-align: center;">
+                                    <div style="font-size: 18px; font-weight: bold;">1,268.00</div>
+                                    <div style="font-size: 12px; opacity: 0.8;">冻结金额</div>
+                                </div>
+                                <div style="text-align: center;">
+                                    <div style="font-size: 18px; font-weight: bold;">1,500.00</div>
+                                    <div style="font-size: 12px; opacity: 0.8;">待结算</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 快捷操作 -->
+                        <div style="background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                            <h3 style="margin: 0 0 20px 0; color: #333;">快捷操作</h3>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px; text-align: center;">
+                                <div onclick="showPage('wallet-withdraw')" style="cursor: pointer;">
+                                    <div style="width: 50px; height: 50px; background: #E3F2FD; border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; font-size: 20px;">💰</div>
+                                    <div style="font-size: 14px; color: #333;">提现</div>
+                                </div>
+                                <div onclick="showPage('wallet-recharge')" style="cursor: pointer;">
+                                    <div style="width: 50px; height: 50px; background: #F3E5F5; border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; font-size: 20px;">💳</div>
+                                    <div style="font-size: 14px; color: #333;">充值</div>
+                                </div>
+                                <div onclick="showPage('wallet-transactions')" style="cursor: pointer;">
+                                    <div style="width: 50px; height: 50px; background: #E8F5E8; border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; font-size: 20px;">📊</div>
+                                    <div style="font-size: 14px; color: #333;">账单</div>
+                                </div>
+                                <div onclick="showPage('wallet-bank-manage')" style="cursor: pointer;">
+                                    <div style="width: 50px; height: 50px; background: #FFF3E0; border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; font-size: 20px;">🏦</div>
+                                    <div style="font-size: 14px; color: #333;">银行卡</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 消息提醒 -->
+                        <div style="background: #FFF3CD; border: 1px solid #FFEAA7; border-radius: 8px; padding: 15px; margin-bottom: 20px;">
+                            <div style="display: flex; align-items: center;">
+                                <span style="color: #856404; font-size: 16px; margin-right: 10px;">⚠️</span>
+                                <div style="flex: 1;">
+                                    <div style="color: #856404; font-size: 14px; font-weight: bold;">您有2条未读消息</div>
+                                    <div style="color: #856404; font-size: 12px;">请及时查看重要通知</div>
+                                </div>
+                                <button onclick="showPage('wallet-messages')" style="background: #FFC107; border: none; border-radius: 15px; padding: 5px 15px; color: white; font-size: 12px; cursor: pointer;">查看</button>
+                            </div>
+                        </div>
+
+                        <!-- 功能入口 -->
+                        <div style="background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                            <h3 style="margin: 0 0 20px 0; color: #333;">更多功能</h3>
+                            <div style="space-y: 15px;">
+                                <div onclick="showPage('wallet-auth')" style="display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid #f0f0f0; cursor: pointer;">
+                                    <div style="width: 40px; height: 40px; background: #E3F2FD; border-radius: 50%; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-size: 16px;">🆔</div>
+                                    <div style="flex: 1;">
+                                        <div style="font-size: 16px; color: #333; margin-bottom: 2px;">实名与认证</div>
+                                        <div style="font-size: 12px; color: #999;">已认证</div>
+                                    </div>
+                                    <div style="color: #999;">></div>
+                                </div>
+                                <div onclick="showPage('wallet-security')" style="display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid #f0f0f0; cursor: pointer;">
+                                    <div style="width: 40px; height: 40px; background: #F3E5F5; border-radius: 50%; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-size: 16px;">🔒</div>
+                                    <div style="flex: 1;">
+                                        <div style="font-size: 16px; color: #333; margin-bottom: 2px;">安全中心</div>
+                                        <div style="font-size: 12px; color: #999;">密码管理与安全设置</div>
+                                    </div>
+                                    <div style="color: #999;">></div>
+                                </div>
+                                <div onclick="showPage('wallet-help')" style="display: flex; align-items: center; padding: 10px 0; cursor: pointer;">
+                                    <div style="width: 40px; height: 40px; background: #E8F5E8; border-radius: 50%; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-size: 16px;">❓</div>
+                                    <div style="flex: 1;">
+                                        <div style="font-size: 16px; color: #333; margin-bottom: 2px;">帮助与客服</div>
+                                        <div style="font-size: 12px; color: #999;">常见问题与在线客服</div>
+                                    </div>
+                                    <div style="color: #999;">></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 云农谷钱包 - 钱包余额详情页面 -->
+                <div class="page" id="wallet-balance">
+                    <div class="header">
+                        <button class="back-btn" onclick="showPage('wallet-overview')">
+                            <img src="返回按钮.png" alt="返回">
+                        </button>
+                        <span>钱包余额详情</span>
+                        <span></span>
+                    </div>
+                    
+                    <div class="content">
+                        <!-- 总览卡片 -->
+                        <div style="background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 15px; padding: 25px; color: white; margin-bottom: 20px;">
+                            <div style="text-align: center;">
+                                <div style="font-size: 14px; opacity: 0.9; margin-bottom: 10px;">总资产(元)</div>
+                                <div style="font-size: 36px; font-weight: bold; margin-bottom: 20px;">28,568.00</div>
+                                <div style="font-size: 12px; opacity: 0.8;">最后更新时间：2024-12-26 14:19</div>
+                            </div>
+                        </div>
+
+                        <!-- 资金详情 -->
+                        <div style="background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                            <h3 style="margin: 0 0 20px 0; color: #333;">资金明细</h3>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #f0f0f0;">
+                                <div>
+                                    <div style="font-size: 16px; color: #333; margin-bottom: 5px;">可用余额</div>
+                                    <div style="font-size: 12px; color: #999;">可用于提现和消费</div>
+                                </div>
+                                <div style="font-size: 18px; font-weight: bold; color: #4CAF50;">25,800.00</div>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #f0f0f0;">
+                                <div>
+                                    <div style="font-size: 16px; color: #333; margin-bottom: 5px;">冻结金额</div>
+                                    <div style="font-size: 12px; color: #999;">售后处理中 ¥568.00</div>
+                                    <div style="font-size: 12px; color: #999;">风险控制 ¥700.00</div>
+                                </div>
+                                <div style="font-size: 18px; font-weight: bold; color: #FF9800;">1,268.00</div>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0;">
+                                <div>
+                                    <div style="font-size: 16px; color: #333; margin-bottom: 5px;">待结算金额</div>
+                                    <div style="font-size: 12px; color: #999;">T+1结算 ¥1,500.00</div>
+                                </div>
+                                <div style="font-size: 18px; font-weight: bold; color: #2196F3;">1,500.00</div>
+                            </div>
+                        </div>
+
+                        <!-- 操作按钮 -->
+                        <div style="display: flex; gap: 15px;">
+                            <button onclick="showPage('wallet-transactions')" style="flex: 1; background: #4CAF50; color: white; border: none; border-radius: 25px; padding: 15px; font-size: 16px; cursor: pointer;">查看流水</button>
+                            <button onclick="showPage('wallet-withdraw')" style="flex: 1; background: white; color: #4CAF50; border: 2px solid #4CAF50; border-radius: 25px; padding: 15px; font-size: 16px; cursor: pointer;">立即提现</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 云农谷钱包 - 账单流水页面 -->
+                <div class="page" id="wallet-transactions">
+                    <div class="header">
+                        <button class="back-btn" onclick="showPage('wallet-overview')">
+                            <img src="返回按钮.png" alt="返回">
+                        </button>
+                        <span>账单流水</span>
+                        <span></span>
+                    </div>
+                    
+                    <div class="content">
+                        <!-- 筛选条件 -->
+                        <div style="background: white; border-radius: 10px; padding: 15px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                                <select style="flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px;">
+                                    <option>全部类型</option>
+                                    <option>收款</option>
+                                    <option>提现</option>
+                                    <option>手续费</option>
+                                    <option>充值</option>
+                                </select>
+                                <select style="flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px;">
+                                    <option>最近7天</option>
+                                    <option>最近30天</option>
+                                    <option>最近3个月</option>
+                                    <option>自定义</option>
+                                </select>
+                            </div>
+                            <input type="text" placeholder="搜索订单号或交易内容" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px; box-sizing: border-box;">
+                        </div>
+
+                        <!-- 流水列表 -->
+                        <div style="background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                            <h3 style="margin: 0 0 20px 0; color: #333;">交易记录</h3>
+                            
+                            <!-- 交易记录1 -->
+                            <div style="padding: 15px 0; border-bottom: 1px solid #f0f0f0;">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+                                    <div style="display: flex; align-items: center;">
+                                        <div style="width: 35px; height: 35px; background: #E8F5E8; border-radius: 50%; margin-right: 12px; display: flex; align-items: center; justify-content: center; font-size: 16px;">💰</div>
+                                        <div>
+                                            <div style="font-size: 16px; color: #333; font-weight: bold;">收款</div>
+                                            <div style="font-size: 12px; color: #999;">订单号：YNP202412260001</div>
+                                        </div>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <div style="font-size: 18px; color: #4CAF50; font-weight: bold;">+580.00</div>
+                                        <div style="font-size: 12px; color: #999;">余额：25,800.00</div>
+                                    </div>
+                                </div>
+                                <div style="font-size: 12px; color: #666; margin-bottom: 8px;">2024-12-26 14:15</div>
+                                <!-- 子条目 - 手续费 -->
+                                <div style="margin-left: 47px; padding: 8px 0;">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                                        <div style="font-size: 14px; color: #666;">- 平台手续费(1.2%)</div>
+                                        <div style="font-size: 14px; color: #F44336;">-6.96</div>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <div style="font-size: 14px; color: #666;">- 通联手续费(0.38%)</div>
+                                        <div style="font-size: 14px; color: #F44336;">-2.20</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 交易记录2 -->
+                            <div style="padding: 15px 0; border-bottom: 1px solid #f0f0f0;">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+                                    <div style="display: flex; align-items: center;">
+                                        <div style="width: 35px; height: 35px; background: #FFF3E0; border-radius: 50%; margin-right: 12px; display: flex; align-items: center; justify-content: center; font-size: 16px;">💳</div>
+                                        <div>
+                                            <div style="font-size: 16px; color: #333; font-weight: bold;">提现</div>
+                                            <div style="font-size: 12px; color: #999;">中国银行(8888)</div>
+                                        </div>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <div style="font-size: 18px; color: #F44336; font-weight: bold;">-1,000.00</div>
+                                        <div style="font-size: 12px; color: #999;">余额：25,220.00</div>
+                                    </div>
+                                </div>
+                                <div style="font-size: 12px; color: #666;">2024-12-26 10:30</div>
+                            </div>
+
+                            <!-- 交易记录3 -->
+                            <div style="padding: 15px 0; border-bottom: 1px solid #f0f0f0;">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+                                    <div style="display: flex; align-items: center;">
+                                        <div style="width: 35px; height: 35px; background: #E3F2FD; border-radius: 50%; margin-right: 12px; display: flex; align-items: center; justify-content: center; font-size: 16px;">💰</div>
+                                        <div>
+                                            <div style="font-size: 16px; color: #333; font-weight: bold;">收款</div>
+                                            <div style="font-size: 12px; color: #999;">订单号：YNP202412250089</div>
+                                        </div>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <div style="font-size: 18px; color: #4CAF50; font-weight: bold;">+320.00</div>
+                                        <div style="font-size: 12px; color: #999;">余额：26,220.00</div>
+                                    </div>
+                                </div>
+                                <div style="font-size: 12px; color: #666; margin-bottom: 8px;">2024-12-25 16:42</div>
+                                <!-- 子条目 - 手续费 -->
+                                <div style="margin-left: 47px; padding: 8px 0;">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                                        <div style="font-size: 14px; color: #666;">- 平台手续费(1.2%)</div>
+                                        <div style="font-size: 14px; color: #F44336;">-3.84</div>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <div style="font-size: 14px; color: #666;">- 通联手续费(0.38%)</div>
+                                        <div style="font-size: 14px; color: #F44336;">-1.22</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 交易记录4 -->
+                            <div style="padding: 15px 0;">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+                                    <div style="display: flex; align-items: center;">
+                                        <div style="width: 35px; height: 35px; background: #F3E5F5; border-radius: 50%; margin-right: 12px; display: flex; align-items: center; justify-content: center; font-size: 16px;">💴</div>
+                                        <div>
+                                            <div style="font-size: 16px; color: #333; font-weight: bold;">充值</div>
+                                            <div style="font-size: 12px; color: #999;">微信支付</div>
+                                        </div>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <div style="font-size: 18px; color: #4CAF50; font-weight: bold;">+5,000.00</div>
+                                        <div style="font-size: 12px; color: #999;">余额：25,900.00</div>
+                                    </div>
+                                </div>
+                                <div style="font-size: 12px; color: #666;">2024-12-25 09:15</div>
+                            </div>
+                        </div>
+
+                        <!-- 加载更多 -->
+                        <div style="text-align: center; padding: 20px;">
+                            <button style="background: #f5f5f5; border: none; border-radius: 20px; padding: 10px 30px; color: #666; cursor: pointer;">加载更多</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 云农谷钱包 - 银行账户管理页面 -->
+                <div class="page" id="wallet-bank-manage">
+                    <div class="header">
+                        <button class="back-btn" onclick="showPage('wallet-overview')">
+                            <img src="返回按钮.png" alt="返回">
+                        </button>
+                        <span>银行账户管理</span>
+                        <span></span>
+                    </div>
+                    
+                    <div class="content">
+                        <!-- 已绑定银行账户 -->
+                        <div style="background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                            <h3 style="margin: 0 0 20px 0; color: #333;">已绑定银行账户</h3>
+                            
+                            <!-- 银行卡1 -->
+                            <div style="border: 1px solid #ddd; border-radius: 10px; padding: 15px; margin-bottom: 15px;">
+                                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                                    <div style="width: 50px; height: 50px; background: #E53935; border-radius: 8px; margin-right: 15px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 14px;">工行</div>
+                                    <div style="flex: 1;">
+                                        <div style="font-size: 16px; color: #333; font-weight: bold; margin-bottom: 5px;">中国工商银行</div>
+                                        <div style="font-size: 14px; color: #666;">**** **** **** 6666</div>
+                                    </div>
+                                    <div style="background: #4CAF50; color: white; font-size: 12px; padding: 4px 8px; border-radius: 10px;">默认</div>
+                                </div>
+                                <div style="display: flex; gap: 10px;">
+                                    <button style="flex: 1; background: #f5f5f5; border: none; border-radius: 5px; padding: 8px; color: #666; font-size: 14px; cursor: pointer;">解绑</button>
+                                </div>
+                            </div>
+                            
+                            <!-- 银行卡2 -->
+                            <div style="border: 1px solid #ddd; border-radius: 10px; padding: 15px; margin-bottom: 15px;">
+                                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                                    <div style="width: 50px; height: 50px; background: #1976D2; border-radius: 8px; margin-right: 15px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 14px;">中行</div>
+                                    <div style="flex: 1;">
+                                        <div style="font-size: 16px; color: #333; font-weight: bold; margin-bottom: 5px;">中国银行</div>
+                                        <div style="font-size: 14px; color: #666;">**** **** **** 8888</div>
+                                    </div>
+                                </div>
+                                <div style="display: flex; gap: 10px;">
+                                    <button style="flex: 1; background: #4CAF50; color: white; border: none; border-radius: 5px; padding: 8px; font-size: 14px; cursor: pointer;">设为默认</button>
+                                    <button style="flex: 1; background: #f5f5f5; border: none; border-radius: 5px; padding: 8px; color: #666; font-size: 14px; cursor: pointer;">解绑</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 绑定新银行账户 -->
+                        <button onclick="showBankBinding()" style="width: 100%; background: #4CAF50; color: white; border: none; border-radius: 25px; padding: 15px; font-size: 16px; cursor: pointer; margin-bottom: 20px;">+ 绑定新的银行账户</button>
+                        
+                        <!-- 绑定说明 -->
+                        <div style="background: #F5F5F5; border-radius: 8px; padding: 15px;">
+                            <h4 style="margin: 0 0 10px 0; color: #333;">温馨提示</h4>
+                            <div style="font-size: 14px; color: #666; line-height: 1.5;">
+                                <p style="margin: 0 0 8px 0;">• 银行账户必须为本人实名认证账户</p>
+                                <p style="margin: 0 0 8px 0;">• 支持工商银行、中国银行、建设银行等主流银行</p>
+                                <p style="margin: 0;">• 绑定后可用于资金提现，请确保信息准确</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 云农谷钱包 - 资金提现页面 -->
+                <div class="page" id="wallet-withdraw">
+                    <div class="header">
+                        <button class="back-btn" onclick="showPage('wallet-overview')">
+                            <img src="返回按钮.png" alt="返回">
+                        </button>
+                        <span>资金提现</span>
+                        <span></span>
+                    </div>
+                    
+                    <div class="content">
+                        <!-- 可提现余额 -->
+                        <div style="background: linear-gradient(135deg, #FF6B6B, #FFE66D); border-radius: 15px; padding: 25px; color: white; margin-bottom: 20px; text-align: center;">
+                            <div style="font-size: 14px; opacity: 0.9; margin-bottom: 10px;">可提现余额(元)</div>
+                            <div style="font-size: 36px; font-weight: bold;">25,800.00</div>
+                        </div>
+
+                        <!-- 提现表单 -->
+                        <div style="background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                            <h3 style="margin: 0 0 20px 0; color: #333;">提现信息</h3>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; margin-bottom: 8px; color: #333; font-size: 14px;">提现金额</label>
+                                <div style="position: relative;">
+                                    <input type="number" placeholder="请输入提现金额" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; box-sizing: border-box;">
+                                    <button style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #4CAF50; color: white; border: none; border-radius: 5px; padding: 5px 10px; font-size: 12px; cursor: pointer;">全部</button>
+                                </div>
+                                <div style="font-size: 12px; color: #999; margin-top: 5px;">单次提现限额：1元 - 50,000元</div>
+                            </div>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; margin-bottom: 8px; color: #333; font-size: 14px;">提现到</label>
+                                <div style="border: 1px solid #ddd; border-radius: 8px; padding: 15px; cursor: pointer;">
+                                    <div style="display: flex; align-items: center;">
+                                        <div style="width: 40px; height: 40px; background: #E53935; border-radius: 6px; margin-right: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 12px;">工行</div>
+                                        <div style="flex: 1;">
+                                            <div style="font-size: 14px; color: #333; margin-bottom: 2px;">中国工商银行</div>
+                                            <div style="font-size: 12px; color: #666;">**** **** **** 6666</div>
+                                        </div>
+                                        <div style="color: #999; font-size: 12px;">></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; margin-bottom: 8px; color: #333; font-size: 14px;">支付密码</label>
+                                <input type="password" placeholder="请输入6位支付密码" maxlength="6" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; box-sizing: border-box;">
+                            </div>
+                        </div>
+
+                        <!-- 提现说明 -->
+                        <div style="background: #F5F5F5; border-radius: 8px; padding: 15px; margin-bottom: 20px;">
+                            <h4 style="margin: 0 0 10px 0; color: #333;">提现说明</h4>
+                            <div style="font-size: 12px; color: #666; line-height: 1.5;">
+                                <p style="margin: 0 0 5px 0;">• 提现时间：工作日9:00-17:00</p>
+                                <p style="margin: 0 0 5px 0;">• 到账时间：实时到账（工作日）</p>
+                                <p style="margin: 0 0 5px 0;">• 提现手续费：免费</p>
+                                <p style="margin: 0;">• 单日提现限额：100,000元</p>
+                            </div>
+                        </div>
+
+                        <!-- 操作按钮 -->
+                        <div style="display: flex; gap: 15px;">
+                            <button onclick="showPage('wallet-withdraw-records')" style="flex: 1; background: white; color: #4CAF50; border: 2px solid #4CAF50; border-radius: 25px; padding: 15px; font-size: 16px; cursor: pointer;">提现记录</button>
+                            <button onclick="submitWithdraw()" style="flex: 1; background: #4CAF50; color: white; border: none; border-radius: 25px; padding: 15px; font-size: 16px; cursor: pointer;">确认提现</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 云农谷钱包 - 账户充值页面 -->
+                <div class="page" id="wallet-recharge">
+                    <div class="header">
+                        <button class="back-btn" onclick="showPage('wallet-overview')">
+                            <img src="返回按钮.png" alt="返回">
+                        </button>
+                        <span>账户充值</span>
+                        <span></span>
+                    </div>
+                    
+                    <div class="content">
+                        <!-- 当前余额 -->
+                        <div style="background: linear-gradient(135deg, #4CAF50, #81C784); border-radius: 15px; padding: 25px; color: white; margin-bottom: 20px; text-align: center;">
+                            <div style="font-size: 14px; opacity: 0.9; margin-bottom: 10px;">当前余额(元)</div>
+                            <div style="font-size: 36px; font-weight: bold;">25,800.00</div>
+                        </div>
+
+                        <!-- 充值金额 -->
+                        <div style="background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                            <h3 style="margin: 0 0 20px 0; color: #333;">充值金额</h3>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <input type="number" placeholder="请输入充值金额" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 18px; text-align: center; box-sizing: border-box;">
+                                <div style="font-size: 12px; color: #999; margin-top: 8px; text-align: center;">单次充值限额：10元 - 50,000元</div>
+                            </div>
+
+                            <!-- 快捷金额 -->
+                            <div style="margin-bottom: 20px;">
+                                <div style="font-size: 14px; color: #333; margin-bottom: 10px;">快捷金额</div>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+                                    <button onclick="setRechargeAmount(100)" style="background: #f5f5f5; border: 1px solid #ddd; border-radius: 8px; padding: 10px; font-size: 14px; cursor: pointer;">100元</button>
+                                    <button onclick="setRechargeAmount(500)" style="background: #f5f5f5; border: 1px solid #ddd; border-radius: 8px; padding: 10px; font-size: 14px; cursor: pointer;">500元</button>
+                                    <button onclick="setRechargeAmount(1000)" style="background: #f5f5f5; border: 1px solid #ddd; border-radius: 8px; padding: 10px; font-size: 14px; cursor: pointer;">1000元</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 充值方式 -->
+                        <div style="background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                            <h3 style="margin: 0 0 20px 0; color: #333;">充值方式</h3>
+                            
+                            <div style="space-y: 15px;">
+                                <div class="payment-method" style="border: 2px solid #4CAF50; border-radius: 8px; padding: 15px; cursor: pointer;">
+                                    <div style="display: flex; align-items: center;">
+                                        <div style="width: 40px; height: 40px; background: #1AAD19; border-radius: 6px; margin-right: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 18px;">💬</div>
+                                        <div style="flex: 1;">
+                                            <div style="font-size: 16px; color: #333; margin-bottom: 2px;">微信支付</div>
+                                            <div style="font-size: 12px; color: #999;">推荐使用，充值秒到账</div>
+                                        </div>
+                                        <div class="checkmark" style="color: #4CAF50; font-size: 20px;">✓</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="payment-method" style="border: 1px solid #ddd; border-radius: 8px; padding: 15px; cursor: pointer;">
+                                    <div style="display: flex; align-items: center;">
+                                        <div style="width: 40px; height: 40px; background: #1678FF; border-radius: 6px; margin-right: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 18px;">💰</div>
+                                        <div style="flex: 1;">
+                                            <div style="font-size: 16px; color: #333; margin-bottom: 2px;">支付宝</div>
+                                            <div style="font-size: 12px; color: #999;">安全便捷，充值秒到账</div>
+                                        </div>
+                                        <div class="checkmark" style="color: #4CAF50; font-size: 20px; visibility: hidden;">✓</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="payment-method" style="border: 1px solid #ddd; border-radius: 8px; padding: 15px; cursor: pointer;">
+                                    <div style="display: flex; align-items: center;">
+                                        <div style="width: 40px; height: 40px; background: #E53935; border-radius: 6px; margin-right: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 12px;">🏦</div>
+                                        <div style="flex: 1;">
+                                            <div style="font-size: 16px; color: #333; margin-bottom: 2px;">银行卡支付</div>
+                                            <div style="font-size: 12px; color: #999;">工商银行(*6666)</div>
+                                        </div>
+                                        <div class="checkmark" style="color: #4CAF50; font-size: 20px; visibility: hidden;">✓</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 操作按钮 -->
+                        <div style="display: flex; gap: 15px;">
+                            <button onclick="showPage('wallet-recharge-records')" style="flex: 1; background: white; color: #4CAF50; border: 2px solid #4CAF50; border-radius: 25px; padding: 15px; font-size: 16px; cursor: pointer;">充值记录</button>
+                            <button onclick="submitRecharge()" style="flex: 1; background: #4CAF50; color: white; border: none; border-radius: 25px; padding: 15px; font-size: 16px; cursor: pointer;">确认充值</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 云农谷钱包 - 实名与认证页面 -->
+                <div class="page" id="wallet-auth">
+                    <div class="header">
+                        <button class="back-btn" onclick="showPage('wallet-overview')">
+                            <img src="返回按钮.png" alt="返回">
+                        </button>
+                        <span>实名与认证</span>
+                        <span></span>
+                    </div>
+                    
+                    <div class="content">
+                        <!-- 认证状态 -->
+                        <div style="background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                            <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                                <div style="width: 60px; height: 60px; background: #4CAF50; border-radius: 50%; margin-right: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px;">✓</div>
+                                <div>
+                                    <div style="font-size: 18px; color: #333; font-weight: bold; margin-bottom: 5px;">企业已认证</div>
+                                    <div style="font-size: 14px; color: #666;">河南***科技有限公司</div>
+                                </div>
+                            </div>
+                            
+                            <!-- 认证详情 -->
+                            <div style="background: #F5F5F5; border-radius: 8px; padding: 15px;">
+                                <h4 style="margin: 0 0 15px 0; color: #333;">认证信息</h4>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                    <span style="color: #666;">企业名称</span>
+                                    <span style="color: #333;">河南XXX科技有限公司</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                    <span style="color: #666;">法人代表</span>
+                                    <span style="color: #333;">王**</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                    <span style="color: #666;">统一社会信用代码</span>
+                                    <span style="color: #333;">914***********X</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="color: #666;">认证时间</span>
+                                    <span style="color: #333;">2024-12-26</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 手机号管理 -->
+                        <div style="background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                            <h3 style="margin: 0 0 20px 0; color: #333;">手机号管理</h3>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #f0f0f0;">
+                                <div>
+                                    <div style="font-size: 16px; color: #333; margin-bottom: 5px;">绑定手机号</div>
+                                    <div style="font-size: 14px; color: #666;">150****9509</div>
+                                </div>
+                                <button onclick="showPhoneChange()" style="background: #4CAF50; color: white; border: none; border-radius: 15px; padding: 8px 15px; font-size: 14px; cursor: pointer;">修改</button>
+                            </div>
+                            
+                            <div style="font-size: 12px; color: #999; margin-top: 10px; line-height: 1.5;">
+                                手机号用于账户安全验证、资金变动通知等重要功能，请确保手机号可正常使用。
+                            </div>
+                        </div>
+
+                        <!-- 认证材料 -->
+                        <div style="background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                            <h3 style="margin: 0 0 20px 0; color: #333;">认证材料</h3>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #f0f0f0;">
+                                <div style="display: flex; align-items: center;">
+                                    <div style="width: 40px; height: 40px; background: #E3F2FD; border-radius: 50%; margin-right: 12px; display: flex; align-items: center; justify-content: center; font-size: 16px;">🆔</div>
+                                    <div>
+                                        <div style="font-size: 16px; color: #333; margin-bottom: 2px;">法人身份证</div>
+                                        <div style="font-size: 12px; color: #4CAF50;">已认证</div>
+                                    </div>
+                                </div>
+                                <button style="background: #f5f5f5; border: none; border-radius: 15px; padding: 8px 15px; color: #666; font-size: 14px; cursor: pointer;">查看</button>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0;">
+                                <div style="display: flex; align-items: center;">
+                                    <div style="width: 40px; height: 40px; background: #FFF3E0; border-radius: 50%; margin-right: 12px; display: flex; align-items: center; justify-content: center; font-size: 16px;">📄</div>
+                                    <div>
+                                        <div style="font-size: 16px; color: #333; margin-bottom: 2px;">营业执照</div>
+                                        <div style="font-size: 12px; color: #4CAF50;">已认证</div>
+                                    </div>
+                                </div>
+                                <button style="background: #f5f5f5; border: none; border-radius: 15px; padding: 8px 15px; color: #666; font-size: 14px; cursor: pointer;">查看</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 云农谷钱包 - 安全中心页面 -->
+                <div class="page" id="wallet-security">
+                    <div class="header">
+                        <button class="back-btn" onclick="showPage('wallet-overview')">
+                            <img src="返回按钮.png" alt="返回">
+                        </button>
+                        <span>安全中心</span>
+                        <span></span>
+                    </div>
+                    
+                    <div class="content">
+                        <!-- 安全评级 -->
+                        <div style="background: linear-gradient(135deg, #4CAF50, #81C784); border-radius: 15px; padding: 25px; color: white; margin-bottom: 20px; text-align: center;">
+                            <div style="font-size: 24px; margin-bottom: 10px;">🛡️</div>
+                            <div style="font-size: 18px; font-weight: bold; margin-bottom: 5px;">安全等级：高</div>
+                            <div style="font-size: 14px; opacity: 0.9;">您的账户安全设置良好</div>
+                        </div>
+
+                        <!-- 密码管理 -->
+                        <div style="background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                            <h3 style="margin: 0 0 20px 0; color: #333;">密码管理</h3>
+                            
+                            <div onclick="showPasswordChange('login')" style="display: flex; align-items: center; padding: 15px 0; border-bottom: 1px solid #f0f0f0; cursor: pointer;">
+                                <div style="width: 40px; height: 40px; background: #E3F2FD; border-radius: 50%; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-size: 16px;">🔑</div>
+                                <div style="flex: 1;">
+                                    <div style="font-size: 16px; color: #333; margin-bottom: 2px;">登录密码</div>
+                                    <div style="font-size: 12px; color: #999;">用于账户登录验证</div>
+                                </div>
+                                <div style="color: #999;">></div>
+                            </div>
+                            
+                            <div onclick="showPasswordChange('payment')" style="display: flex; align-items: center; padding: 15px 0; border-bottom: 1px solid #f0f0f0; cursor: pointer;">
+                                <div style="width: 40px; height: 40px; background: #F3E5F5; border-radius: 50%; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-size: 16px;">💳</div>
+                                <div style="flex: 1;">
+                                    <div style="font-size: 16px; color: #333; margin-bottom: 2px;">支付密码</div>
+                                    <div style="font-size: 12px; color: #4CAF50;">已设置</div>
+                                </div>
+                                <div style="color: #999;">></div>
+                            </div>
+                            
+                            <div onclick="showPasswordReset()" style="display: flex; align-items: center; padding: 15px 0; cursor: pointer;">
+                                <div style="width: 40px; height: 40px; background: #FFF3E0; border-radius: 50%; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-size: 16px;">🔄</div>
+                                <div style="flex: 1;">
+                                    <div style="font-size: 16px; color: #333; margin-bottom: 2px;">重置支付密码</div>
+                                    <div style="font-size: 12px; color: #999;">忘记密码时使用</div>
+                                </div>
+                                <div style="color: #999;">></div>
+                            </div>
+                        </div>
+
+                        <!-- 安全设置 -->
+                        <div style="background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                            <h3 style="margin: 0 0 20px 0; color: #333;">安全设置</h3>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #f0f0f0;">
+                                <div>
+                                    <div style="font-size: 16px; color: #333; margin-bottom: 2px;">手机号验证</div>
+                                    <div style="font-size: 12px; color: #4CAF50;">已开启 (150****9509)</div>
+                                </div>
+                                <div style="background: #4CAF50; width: 40px; height: 24px; border-radius: 12px; position: relative; cursor: pointer;">
+                                    <div style="background: white; width: 20px; height: 20px; border-radius: 50%; position: absolute; top: 2px; right: 2px; transition: all 0.3s;"></div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #f0f0f0;">
+                                <div>
+                                    <div style="font-size: 16px; color: #333; margin-bottom: 2px;">交易提醒</div>
+                                    <div style="font-size: 12px; color: #4CAF50;">已开启</div>
+                                </div>
+                                <div style="background: #4CAF50; width: 40px; height: 24px; border-radius: 12px; position: relative; cursor: pointer;">
+                                    <div style="background: white; width: 20px; height: 20px; border-radius: 50%; position: absolute; top: 2px; right: 2px; transition: all 0.3s;"></div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0;">
+                                <div>
+                                    <div style="font-size: 16px; color: #333; margin-bottom: 2px;">指纹支付</div>
+                                    <div style="font-size: 12px; color: #999;">未开启</div>
+                                </div>
+                                <div style="background: #ddd; width: 40px; height: 24px; border-radius: 12px; position: relative; cursor: pointer;">
+                                    <div style="background: white; width: 20px; height: 20px; border-radius: 50%; position: absolute; top: 2px; left: 2px; transition: all 0.3s;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 云农谷钱包 - 消息通知页面 -->
+                <div class="page" id="wallet-messages">
+                    <div class="header">
+                        <button class="back-btn" onclick="showPage('wallet-overview')">
+                            <img src="返回按钮.png" alt="返回">
+                        </button>
+                        <span>消息通知</span>
+                        <span></span>
+                    </div>
+                    
+                    <div class="content">
+                        <!-- 筛选选项 -->
+                        <div style="background: white; border-radius: 10px; padding: 15px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                            <div style="display: flex; gap: 10px;">
+                                <button class="message-filter active" onclick="filterMessages('all')" style="background: #4CAF50; color: white; border: none; border-radius: 15px; padding: 8px 15px; font-size: 14px; cursor: pointer;">全部</button>
+                                <button class="message-filter" onclick="filterMessages('transaction')" style="background: #f5f5f5; color: #666; border: none; border-radius: 15px; padding: 8px 15px; font-size: 14px; cursor: pointer;">交易</button>
+                                <button class="message-filter" onclick="filterMessages('system')" style="background: #f5f5f5; color: #666; border: none; border-radius: 15px; padding: 8px 15px; font-size: 14px; cursor: pointer;">系统</button>
+                                <button class="message-filter" onclick="filterMessages('activity')" style="background: #f5f5f5; color: #666; border: none; border-radius: 15px; padding: 8px 15px; font-size: 14px; cursor: pointer;">活动</button>
+                            </div>
+                        </div>
+
+                        <!-- 消息列表 -->
+                        <div style="background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                            <!-- 消息1 -->
+                            <div style="padding: 15px 0; border-bottom: 1px solid #f0f0f0; position: relative;">
+                                <div style="position: absolute; top: 15px; right: 0; width: 8px; height: 8px; background: #FF4444; border-radius: 50%;"></div>
+                                <div style="display: flex; align-items: flex-start;">
+                                    <div style="width: 40px; height: 40px; background: #E8F5E8; border-radius: 50%; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-size: 16px;">💰</div>
+                                    <div style="flex: 1;">
+                                        <div style="font-size: 16px; color: #333; font-weight: bold; margin-bottom: 5px;">收款到账提醒</div>
+                                        <div style="font-size: 14px; color: #666; margin-bottom: 8px; line-height: 1.4;">您的账户收到一笔580.00元的收款，扣除手续费后实际到账570.84元</div>
+                                        <div style="font-size: 12px; color: #999;">2024-12-26 14:15</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 消息2 -->
+                            <div style="padding: 15px 0; border-bottom: 1px solid #f0f0f0; position: relative;">
+                                <div style="position: absolute; top: 15px; right: 0; width: 8px; height: 8px; background: #FF4444; border-radius: 50%;"></div>
+                                <div style="display: flex; align-items: flex-start;">
+                                    <div style="width: 40px; height: 40px; background: #FFF3E0; border-radius: 50%; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-size: 16px;">🔔</div>
+                                    <div style="flex: 1;">
+                                        <div style="font-size: 16px; color: #333; font-weight: bold; margin-bottom: 5px;">系统维护通知</div>
+                                        <div style="font-size: 14px; color: #666; margin-bottom: 8px; line-height: 1.4;">系统将于今晚23:00-次日1:00进行维护升级，期间可能影响部分功能使用</div>
+                                        <div style="font-size: 12px; color: #999;">2024-12-26 10:00</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 消息3 -->
+                            <div style="padding: 15px 0; border-bottom: 1px solid #f0f0f0;">
+                                <div style="display: flex; align-items: flex-start;">
+                                    <div style="width: 40px; height: 40px; background: #E3F2FD; border-radius: 50%; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-size: 16px;">✅</div>
+                                    <div style="flex: 1;">
+                                        <div style="font-size: 16px; color: #333; font-weight: bold; margin-bottom: 5px;">提现成功通知</div>
+                                        <div style="font-size: 14px; color: #666; margin-bottom: 8px; line-height: 1.4;">您申请的1000.00元提现已成功到账至工商银行(*6666)</div>
+                                        <div style="font-size: 12px; color: #999;">2024-12-26 10:35</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 消息4 -->
+                            <div style="padding: 15px 0; border-bottom: 1px solid #f0f0f0;">
+                                <div style="display: flex; align-items: flex-start;">
+                                    <div style="width: 40px; height: 40px; background: #F3E5F5; border-radius: 50%; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-size: 16px;">🎁</div>
+                                    <div style="flex: 1;">
+                                        <div style="font-size: 16px; color: #333; font-weight: bold; margin-bottom: 5px;">新用户专享福利</div>
+                                        <div style="font-size: 14px; color: #666; margin-bottom: 8px; line-height: 1.4;">恭喜您获得新用户专享福利包，包含免手续费券3张，点击查看详情</div>
+                                        <div style="font-size: 12px; color: #999;">2024-12-25 09:00</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 消息5 -->
+                            <div style="padding: 15px 0;">
+                                <div style="display: flex; align-items: flex-start;">
+                                    <div style="width: 40px; height: 40px; background: #E8F5E8; border-radius: 50%; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-size: 16px;">💰</div>
+                                    <div style="flex: 1;">
+                                        <div style="font-size: 16px; color: #333; font-weight: bold; margin-bottom: 5px;">收款到账提醒</div>
+                                        <div style="font-size: 14px; color: #666; margin-bottom: 8px; line-height: 1.4;">您的账户收到一笔320.00元的收款，扣除手续费后实际到账314.94元</div>
+                                        <div style="font-size: 12px; color: #999;">2024-12-25 16:42</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 底部操作 -->
+                        <div style="text-align: center; padding: 20px;">
+                            <button style="background: #f5f5f5; border: none; border-radius: 20px; padding: 10px 30px; color: #666; cursor: pointer;">全部标记为已读</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 云农谷钱包 - 帮助与客服页面 -->
+                <div class="page" id="wallet-help">
+                    <div class="header">
+                        <button class="back-btn" onclick="showPage('wallet-overview')">
+                            <img src="返回按钮.png" alt="返回">
+                        </button>
+                        <span>帮助与客服</span>
+                        <span></span>
+                    </div>
+                    
+                    <div class="content">
+                        <!-- 在线客服 -->
+                        <div style="background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 15px; padding: 25px; color: white; margin-bottom: 20px;">
+                            <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                                <div style="width: 50px; height: 50px; background: rgba(255,255,255,0.2); border-radius: 50%; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-size: 24px;">👨‍💼</div>
+                                <div>
+                                    <div style="font-size: 18px; font-weight: bold; margin-bottom: 5px;">在线客服</div>
+                                    <div style="font-size: 14px; opacity: 0.9;">工作时间：9:00-18:00</div>
+                                </div>
+                            </div>
+                            <button onclick="startOnlineService()" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); border-radius: 25px; padding: 12px 30px; color: white; font-size: 16px; cursor: pointer; width: 100%;">立即咨询</button>
+                        </div>
+
+                        <!-- 联系方式 -->
+                        <div style="background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                            <h3 style="margin: 0 0 20px 0; color: #333;">联系方式</h3>
+                            
+                            <div style="display: flex; align-items: center; padding: 15px 0; border-bottom: 1px solid #f0f0f0;">
+                                <div style="width: 40px; height: 40px; background: #E3F2FD; border-radius: 50%; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-size: 16px;">📞</div>
+                                <div style="flex: 1;">
+                                    <div style="font-size: 16px; color: #333; margin-bottom: 2px;">客服热线</div>
+                                    <div style="font-size: 14px; color: #666;">400-888-9999</div>
+                                </div>
+                                <button style="background: #4CAF50; color: white; border: none; border-radius: 15px; padding: 8px 15px; font-size: 14px; cursor: pointer;">拨打</button>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center; padding: 15px 0;">
+                                <div style="width: 40px; height: 40px; background: #F3E5F5; border-radius: 50%; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-size: 16px;">✉️</div>
+                                <div style="flex: 1;">
+                                    <div style="font-size: 16px; color: #333; margin-bottom: 2px;">邮箱客服</div>
+                                    <div style="font-size: 14px; color: #666;">service@yunnongu.com</div>
+                                </div>
+                                <button style="background: #4CAF50; color: white; border: none; border-radius: 15px; padding: 8px 15px; font-size: 14px; cursor: pointer;">发送</button>
+                            </div>
+                        </div>
+
+                        <!-- 常见问题 -->
+                        <div style="background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                            <h3 style="margin: 0 0 20px 0; color: #333;">常见问题</h3>
+                            
+                            <!-- 问题1 -->
+                            <div class="faq-item" onclick="toggleFaq(1)" style="border-bottom: 1px solid #f0f0f0; cursor: pointer;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0;">
+                                    <div style="font-size: 16px; color: #333;">如何进行资金提现？</div>
+                                    <div class="faq-arrow" style="color: #999; transition: transform 0.3s;">▼</div>
+                                </div>
+                                <div class="faq-content" style="display: none; padding-bottom: 15px; color: #666; line-height: 1.5;">
+                                    <p>1. 点击"提现"按钮进入提现页面</p>
+                                    <p>2. 输入提现金额，选择提现银行卡</p>
+                                    <p>3. 输入支付密码确认提现</p>
+                                    <p>4. 提现申请提交后，资金将在工作日实时到账</p>
+                                </div>
+                            </div>
+
+                            <!-- 问题2 -->
+                            <div class="faq-item" onclick="toggleFaq(2)" style="border-bottom: 1px solid #f0f0f0; cursor: pointer;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0;">
+                                    <div style="font-size: 16px; color: #333;">提现手续费如何收取？</div>
+                                    <div class="faq-arrow" style="color: #999; transition: transform 0.3s;">▼</div>
+                                </div>
+                                <div class="faq-content" style="display: none; padding-bottom: 15px; color: #666; line-height: 1.5;">
+                                    <p>目前平台提现手续费为免费，但银行可能收取跨行转账费用，具体以银行规定为准。</p>
+                                </div>
+                            </div>
+
+                            <!-- 问题3 -->
+                            <div class="faq-item" onclick="toggleFaq(3)" style="border-bottom: 1px solid #f0f0f0; cursor: pointer;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0;">
+                                    <div style="font-size: 16px; color: #333;">如何绑定银行卡？</div>
+                                    <div class="faq-arrow" style="color: #999; transition: transform 0.3s;">▼</div>
+                                </div>
+                                <div class="faq-content" style="display: none; padding-bottom: 15px; color: #666; line-height: 1.5;">
+                                    <p>1. 进入"银行账户管理"页面</p>
+                                    <p>2. 点击"绑定新的银行账户"</p>
+                                    <p>3. 填写银行卡信息并完成验证</p>
+                                    <p>注意：银行卡必须为本人实名认证账户</p>
+                                </div>
+                            </div>
+
+                            <!-- 问题4 -->
+                            <div class="faq-item" onclick="toggleFaq(4)" style="border-bottom: 1px solid #f0f0f0; cursor: pointer;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0;">
+                                    <div style="font-size: 16px; color: #333;">忘记支付密码怎么办？</div>
+                                    <div class="faq-arrow" style="color: #999; transition: transform 0.3s;">▼</div>
+                                </div>
+                                <div class="faq-content" style="display: none; padding-bottom: 15px; color: #666; line-height: 1.5;">
+                                    <p>1. 进入"安全中心"页面</p>
+                                    <p>2. 选择"重置支付密码"</p>
+                                    <p>3. 通过手机验证码验证身份</p>
+                                    <p>4. 设置新的支付密码</p>
+                                </div>
+                            </div>
+
+                            <!-- 问题5 -->
+                            <div class="faq-item" onclick="toggleFaq(5)" style="cursor: pointer;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0;">
+                                    <div style="font-size: 16px; color: #333;">资金安全如何保障？</div>
+                                    <div class="faq-arrow" style="color: #999; transition: transform 0.3s;">▼</div>
+                                </div>
+                                <div class="faq-content" style="display: none; padding-bottom: 15px; color: #666; line-height: 1.5;">
+                                    <p>1. 采用银行级别的安全加密技术</p>
+                                    <p>2. 与知名第三方支付机构合作</p>
+                                    <p>3. 实行资金专户管理，专款专用</p>
+                                    <p>4. 24小时风控监控，异常交易及时拦截</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -1936,6 +2856,20 @@
                 
                 // 同时更新企业认证步骤导航
                 updateEnterpriseAuthStepNavigation(pageId);
+            }
+
+            // 钱包页面需要展开钱包菜单
+            const walletPages = ['wallet-overview', 'wallet-balance', 'wallet-transactions', 'wallet-bank-manage', 'wallet-withdraw', 'wallet-recharge', 'wallet-auth', 'wallet-security', 'wallet-messages', 'wallet-help'];
+            if (walletPages.includes(pageId)) {
+                const walletCategory = document.getElementById('wallet-category');
+                const walletCategoryBtn = document.querySelector('[onclick*="wallet-category"]');
+                const arrow = walletCategoryBtn.querySelector('.category-arrow');
+                
+                if (!walletCategory.classList.contains('expanded')) {
+                    walletCategory.classList.add('expanded');
+                    walletCategoryBtn.classList.add('expanded');
+                    arrow.textContent = '▼';
+                }
             }
         }
 
@@ -2184,6 +3118,110 @@
             setTimeout(() => {
                 document.body.removeChild(toast);
             }, 1500);
+        }
+
+        // === 钱包功能相关函数 ===
+
+        // 设置充值金额
+        function setRechargeAmount(amount) {
+            const input = document.querySelector('#wallet-recharge input[type="number"]');
+            if (input) {
+                input.value = amount;
+            }
+        }
+
+        // 提交充值
+        function submitRecharge() {
+            const amount = document.querySelector('#wallet-recharge input[type="number"]').value;
+            if (!amount || amount <= 0) {
+                alert('请输入有效的充值金额');
+                return;
+            }
+            showToast('充值申请已提交，请在弹出的支付页面完成支付');
+        }
+
+        // 提交提现
+        function submitWithdraw() {
+            const amount = document.querySelector('#wallet-withdraw input[type="number"]').value;
+            const password = document.querySelector('#wallet-withdraw input[type="password"]').value;
+            
+            if (!amount || amount <= 0) {
+                alert('请输入有效的提现金额');
+                return;
+            }
+            
+            if (!password) {
+                alert('请输入支付密码');
+                return;
+            }
+            
+            showToast('提现申请已提交，资金将在工作日实时到账');
+        }
+
+        // 显示银行卡绑定
+        function showBankBinding() {
+            showToast('银行卡绑定功能暂未实现，这是演示原型');
+        }
+
+        // 显示手机号修改
+        function showPhoneChange() {
+            showToast('手机号修改功能暂未实现，这是演示原型');
+        }
+
+        // 显示密码修改
+        function showPasswordChange(type) {
+            if (type === 'login') {
+                showToast('登录密码修改功能暂未实现，这是演示原型');
+            } else if (type === 'payment') {
+                showToast('支付密码修改功能暂未实现，这是演示原型');
+            }
+        }
+
+        // 显示密码重置
+        function showPasswordReset() {
+            showToast('支付密码重置功能暂未实现，这是演示原型');
+        }
+
+        // 消息筛选
+        function filterMessages(type) {
+            // 更新筛选按钮状态
+            document.querySelectorAll('.message-filter').forEach(btn => {
+                btn.style.background = '#f5f5f5';
+                btn.style.color = '#666';
+                btn.classList.remove('active');
+            });
+            
+            event.target.style.background = '#4CAF50';
+            event.target.style.color = 'white';
+            event.target.classList.add('active');
+            
+            const typeMap = {
+                'all': '全部',
+                'transaction': '交易',
+                'system': '系统',
+                'activity': '活动'
+            };
+            showToast(`筛选${typeMap[type]}消息`);
+        }
+
+        // 开始在线客服
+        function startOnlineService() {
+            showToast('正在连接在线客服，请稍候...');
+        }
+
+        // FAQ展开/收起
+        function toggleFaq(index) {
+            const faqItem = event.currentTarget;
+            const content = faqItem.querySelector('.faq-content');
+            const arrow = faqItem.querySelector('.faq-arrow');
+            
+            if (content.style.display === 'none' || !content.style.display) {
+                content.style.display = 'block';
+                arrow.style.transform = 'rotate(180deg)';
+            } else {
+                content.style.display = 'none';
+                arrow.style.transform = 'rotate(0deg)';
+            }
         }
     </script>
 </body>
