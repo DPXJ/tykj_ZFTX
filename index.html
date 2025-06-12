@@ -862,6 +862,11 @@
             <button class="nav-btn" onclick="showPage('wallet-messages')">消息通知</button>
             <button class="nav-btn" onclick="showPage('wallet-help')">帮助与客服</button>
         </div>
+
+        <div class="nav-category" onclick="openAdminPanel()">
+            <span>管理后台</span>
+            <span class="category-arrow">🔗</span>
+        </div>
     </div>
 
     <div class="phone-container">
@@ -3222,6 +3227,11 @@
                 content.style.display = 'none';
                 arrow.style.transform = 'rotate(0deg)';
             }
+        }
+
+        // 打开管理后台
+        function openAdminPanel() {
+            window.open('https://www.baidu.com', '_blank');
         }
     </script>
 </body>
