@@ -847,12 +847,12 @@
         </div>
 
         <div class="nav-category" onclick="toggleCategory('wallet-category')">
-            <span>云农谷钱包</span>
+            <span>商户资金管理</span>
             <span class="category-arrow">▶</span>
         </div>
         <div class="nav-submenu" id="wallet-category">
             <button class="nav-btn" onclick="showPage('wallet-overview')">账户概览</button>
-            <button class="nav-btn" onclick="showPage('wallet-balance')">钱包余额详情</button>
+            <button class="nav-btn" onclick="showPage('wallet-balance')">资金余额详情</button>
             <button class="nav-btn" onclick="showPage('wallet-transactions')">账单流水</button>
             <button class="nav-btn" onclick="showPage('wallet-bank-manage')">银行账户管理</button>
             <button class="nav-btn" onclick="showPage('wallet-withdraw')">资金提现</button>
@@ -1901,13 +1901,13 @@
                     </div>
                 </div>
 
-                <!-- 云农谷钱包 - 账户概览页面 -->
+                <!-- 商户资金管理 - 账户概览页面 -->
                 <div class="page" id="wallet-overview">
                     <div class="header">
                         <button class="back-btn" onclick="showPage('home')">
                             <img src="返回按钮.png" alt="返回">
                         </button>
-                        <span>云农谷钱包</span>
+                        <span>商户资金管理</span>
                         <span></span>
                     </div>
                     
@@ -2005,13 +2005,13 @@
                     </div>
                 </div>
 
-                <!-- 云农谷钱包 - 钱包余额详情页面 -->
+                <!-- 商户资金管理 - 资金余额详情页面 -->
                 <div class="page" id="wallet-balance">
                     <div class="header">
                         <button class="back-btn" onclick="showPage('wallet-overview')">
                             <img src="返回按钮.png" alt="返回">
                         </button>
-                        <span>钱包余额详情</span>
+                        <span>资金余额详情</span>
                         <span></span>
                     </div>
                     
@@ -2063,7 +2063,7 @@
                     </div>
                 </div>
 
-                <!-- 云农谷钱包 - 账单流水页面 -->
+                <!-- 商户资金管理 - 账单流水页面 -->
                 <div class="page" id="wallet-transactions">
                     <div class="header">
                         <button class="back-btn" onclick="showPage('wallet-overview')">
@@ -2200,7 +2200,7 @@
                     </div>
                 </div>
 
-                <!-- 云农谷钱包 - 银行账户管理页面 -->
+                <!-- 商户资金管理 - 银行账户管理页面 -->
                 <div class="page" id="wallet-bank-manage">
                     <div class="header">
                         <button class="back-btn" onclick="showPage('wallet-overview')">
@@ -2261,7 +2261,7 @@
                     </div>
                 </div>
 
-                <!-- 云农谷钱包 - 资金提现页面 -->
+                <!-- 商户资金管理 - 资金提现页面 -->
                 <div class="page" id="wallet-withdraw">
                     <div class="header">
                         <button class="back-btn" onclick="showPage('wallet-overview')">
@@ -2330,7 +2330,7 @@
                     </div>
                 </div>
 
-                <!-- 云农谷钱包 - 账户充值页面 -->
+                <!-- 商户资金管理 - 账户充值页面 -->
                 <div class="page" id="wallet-recharge">
                     <div class="header">
                         <button class="back-btn" onclick="showPage('wallet-overview')">
@@ -2415,7 +2415,7 @@
                     </div>
                 </div>
 
-                <!-- 云农谷钱包 - 实名与认证页面 -->
+                <!-- 商户资金管理 - 实名与认证页面 -->
                 <div class="page" id="wallet-auth">
                     <div class="header">
                         <button class="back-btn" onclick="showPage('wallet-overview')">
@@ -2504,7 +2504,7 @@
                     </div>
                 </div>
 
-                <!-- 云农谷钱包 - 安全中心页面 -->
+                <!-- 商户资金管理 - 安全中心页面 -->
                 <div class="page" id="wallet-security">
                     <div class="header">
                         <button class="back-btn" onclick="showPage('wallet-overview')">
@@ -2591,7 +2591,7 @@
                     </div>
                 </div>
 
-                <!-- 云农谷钱包 - 消息通知页面 -->
+                <!-- 商户资金管理 - 消息通知页面 -->
                 <div class="page" id="wallet-messages">
                     <div class="header">
                         <button class="back-btn" onclick="showPage('wallet-overview')">
@@ -2684,7 +2684,7 @@
                     </div>
                 </div>
 
-                <!-- 云农谷钱包 - 帮助与客服页面 -->
+                <!-- 商户资金管理 - 帮助与客服页面 -->
                 <div class="page" id="wallet-help">
                     <div class="header">
                         <button class="back-btn" onclick="showPage('wallet-overview')">
@@ -2863,7 +2863,7 @@
                 updateEnterpriseAuthStepNavigation(pageId);
             }
 
-            // 钱包页面需要展开钱包菜单
+            // 资金管理页面需要展开资金管理菜单
             const walletPages = ['wallet-overview', 'wallet-balance', 'wallet-transactions', 'wallet-bank-manage', 'wallet-withdraw', 'wallet-recharge', 'wallet-auth', 'wallet-security', 'wallet-messages', 'wallet-help'];
             if (walletPages.includes(pageId)) {
                 const walletCategory = document.getElementById('wallet-category');
@@ -3125,7 +3125,7 @@
             }, 1500);
         }
 
-        // === 钱包功能相关函数 ===
+        // === 资金管理功能相关函数 ===
 
         // 设置充值金额
         function setRechargeAmount(amount) {
